@@ -1,0 +1,51 @@
+{{#if header-footer-template}}
+<script src="//global.adelaide.edu.au/style-guide-v2/latest/js/plugins/global-assets-loader.js"></script>
+{{/if}}
+{{#unless header-footer-template}}
+<script src="{{root}}assets/js/plugins/global-assets-loader.js"></script>
+{{/unless}}
+<script>
+  {{#unless header-footer-template}}
+  if (window.location.origin.indexOf('adelaide.edu.au') > -1) {
+  {{/unless}}
+    var _globalassets = new GlobalAssetsLoader({
+      "quicklinks": {
+        "path": "//global.adelaide.edu.au/v/style-guide2/includes/common/static-quicklinks-menu.html",
+        "selector": "ua-header-quicklinks"
+      },
+      "search": {
+        "path": "//global.adelaide.edu.au/v/style-guide2/includes/common/static-search.html",
+        "selector": "ua-search"
+      },
+      "megamenu": {
+        "path": "//global.adelaide.edu.au/v/style-guide2/includes/common/static-mega-menu.html",
+        "selector": "ua-mega-menu"
+      },
+      "footer": {
+        "path": "//global.adelaide.edu.au/v/style-guide2/includes/common/static-global-footer.html",
+        "selector": "ua-footer"
+      }
+    });
+    {{#unless header-footer-template}}
+    } else {
+    var _globalassets = new GlobalAssetsLoader({
+      "quicklinks": {
+        "path": "/partials/static-quicklinks-menu.html",
+        "selector": "ua-header-quicklinks"
+      },
+      "search": {
+        "path": "/partials/static-search.html",
+        "selector": "ua-search"
+      },
+      "megamenu": {
+        "path": "/partials/static-mega-menu.html",
+        "selector": "ua-mega-menu"
+      },
+      "footer": {
+        "path": "/partials/static-global-footer.html",
+        "selector": "ua-footer"
+      }
+    });
+  }
+  {{/unless}}
+</script>

@@ -1,0 +1,160 @@
+{{#unless hide-slider-alternative}}
+<!-- ***************************** -->
+<!-- OPTIONAL add-on layer plugins -->
+<!-- ***************************** -->
+<!-- PANORAMA ADD-ON FILES -->
+<link rel='stylesheet' href='assets/video-slider/add-ons/panorama/css/revolution.addon.panorama.css' type='text/css' media='all' />
+<script type='text/javascript' src='assets/video-slider/add-ons/panorama/js/three.min.js'></script>
+<script type='text/javascript' src='assets/video-slider/add-ons/panorama/js/revolution.addon.panorama.min.js'></script>
+<!-- DISTORTION ADD-ON FILES -->
+<link rel='stylesheet' href='assets/video-slider/add-ons/distortion/css/distortion.css' type='text/css' media='all' />
+<script type='text/javascript' src='assets/video-slider/add-ons/distortion/js/pixi.min.js'></script>
+<script type='text/javascript' src='assets/video-slider/add-ons/distortion/js/revolution.addon.distortion.min.js'></script>
+<!-- BEFORE/AFTER ADD-ON FILES  MUST BE INSERTED AFTER THE SLIDER DOM ELEMENTS !-->
+<link rel='stylesheet' href='assets/video-slider/add-ons/beforeafter/css/revolution.addon.beforeafter.css' type='text/css' media='all' />		
+<script type='text/javascript' src='assets/video-slider/add-ons/beforeafter/js/revolution.addon.beforeafter.min.js'></script>
+<!-- ***************************** -->
+{{/unless}}
+
+<!-- REQUIRED scripts -->
+<script type="text/javascript" src="assets/video-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="assets/video-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+    var slider = jQuery('#rev_slider_1').show().revolution({
+      {{#if slider-fullscreen}}
+      sliderLayout: 'fullscreen',
+      fullScreenOffset: "10%",
+      {{/if}}
+      {{#unless slider-fullscreen}}
+      sliderLayout: 'fullwidth',
+      {{/unless}}
+      jsFileLocation: '',
+      spinner: "spinner4",
+      delay: 9000,
+      navigation: {
+        keyboardNavigation: 'on',
+        keyboard_direction: 'horizontal',
+        {{#unless slider-fullscreen}}
+        mouseScrollNavigation: 'on',
+        mouseScrollReverse: 'reverse',
+        {{/unless}}
+        onHoverStop: 'on',
+        arrows: {
+          enable: true,
+          style: "uranus",
+          hide_onleave: true,
+          hide_onmobile: true,
+          hide_delay: 200
+        },
+        bullets: {
+          enable: true,
+          style: "hebe",
+          tmp: '<span class="tp-bullet-image"></span>',
+          hide_onleave: true,
+          hide_onmobile: true,
+          hide_delay: 200,
+          h_align: "center",
+          v_align: "bottom",
+          h_offset: 0,
+          v_offset: 20,
+          space: 5
+        },
+        touch: {
+          touchenabled: 'on',
+          swipe_threshold: 75,
+          swipe_min_touches: 1,
+          swipe_direction: 'horizontal',
+          drag_block_vertical: true
+        }
+      },
+      viewPort: {
+        enable: true,
+        outof: "wait",
+        visible_area: "80%",
+        presize: false
+      },
+      responsiveLevels: [1240, 1024, 778, 480],
+      visibilityLevels: [1240, 1024, 778, 480],
+      gridwidth: [1240, 1024, 778, 480],
+      gridheight: [700, 700, 500, 400],
+      lazyType: "smart",
+      parallax: {
+        {{#if slider-3d}}
+        type:"3D",
+        {{/if}}
+        {{#unless slider-3d}}
+        type: 'scroll',
+        {{/unless}}
+        origo:"slidercenter",
+        speed:400,
+        levels: [5,10,15,20,25,30,35,40,45,46,47,48,49,50,51,55],
+        {{#if slider-3d}}
+        ddd_shadow:"off",
+        ddd_bgfreeze:"off",
+        ddd_overflow:"hidden",
+        ddd_layer_overflow:"visible",
+        ddd_z_correction:65
+        {{/if}}
+      },
+      // scrolleffect: {
+      //   fade: "on",
+      //   grayscale: "on",
+      //   on_slidebg: "on",
+      //   on_parallax_layers: "on",
+      //   direction: "top",
+      //   multiplicator_layers: "1.4",
+      //   tilt: "10",
+      //   disable_on_mobile: "off",
+      // }
+    });
+
+    {{#unless hide-slider-alternative}}
+    // Init the distortion add-on plugin
+    RsLiquideffectAddOn(jQuery, slider);
+    
+    // Init the panorama add-on plugin
+    RsAddonPanorama(jQuery, slider);
+
+    // Init the beforeafter add-on plugin
+    RevSliderBeforeAfter(jQuery, slider, {
+ 
+      /* 
+          default CSS cursor when hovering over the drag-arrows
+          https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+      */
+      cursor: "move",
+
+      /* 
+          set to "true" if the slider is a carousel:
+          https://www.themepunch.com/revsliderjquery-doc/carousels/
+      */
+      carousel: false,
+
+      arrowStyles: {
+          leftIcon: "fa fa-caret-left", /* left arrow icon class */
+          rightIcon: "fa fa-caret-right", /* right arrow icon class */
+          topIcon: "fa fa-caret-up", /* top arrow icon class */
+          bottomIcon: "fa fa-caret-down", /* bottom arrow icon class */
+          size: "35", /* arrow icon font size */
+          color: "#ffffff", /* arrow icon color */
+          spacing: "10", /* the spacing in pixels between the icons */
+          bgColor: "transparent", /* arrows container background color */
+          padding: "0", /* arrows container padding */
+          borderRadius: "0" /* arrows container border-radius value */
+      },
+
+      dividerStyles: {
+          width: "1", /* the divider-line size in pixels */
+          color: "rgba(255, 255, 255, 0.5)" /* the divider-line's color */
+      }
+
+      });
+
+      {{/unless}}
+
+  });
+
+</script>
+  

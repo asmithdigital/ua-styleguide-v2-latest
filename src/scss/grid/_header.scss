@@ -1,0 +1,102 @@
+$closebutton-color: $white;
+$closebutton-color-hover: $white;
+
+.#{$logo} {
+  @include grid-column(2.5);
+  @include show-for(large);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: ($global-padding * 4) ($global-padding * 1.5) ($global-padding * 3) !important;
+
+  &--mobile {
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    max-width: 100px;
+    padding: 0.75rem 0.75rem $global-padding * 1.2;
+  }
+}
+
+// Header layout
+.#{$header} {
+  @include menu-off-canvas();
+  @include header-close-button($hide-on-desktop: true);
+
+  @include breakpoint(large) {
+    padding-top: 0;
+  }
+
+  &__title-bar {
+    @include title-bar(0);
+    position: relative;
+    z-index: 1;
+    border-top: 5px solid $black;
+
+    @include breakpoint(large) {
+      display: none;
+    }
+
+    &-left {
+      overflow: hidden;
+    }
+
+    // FOUC
+    @include breakpoint(large) {
+      .no-js & {
+        display: none;
+      }
+    }
+
+    &-icon {
+      padding: 1rem;
+
+      &:hover,
+      &:focus {
+        color: $white;
+      }
+    }
+  }
+
+  &__topbar-first {
+    position: relative;
+    z-index: 2;
+
+    @include breakpoint(large) {
+      padding-right: 0;
+    }
+  }
+
+  &__container {
+    @include grid-row();
+    @include top-bar-container;
+    @include top-bar-stacked;
+    position: relative;
+    padding: 0;
+
+    @include breakpoint(medium) {
+      @include top-bar-unstack;
+    }
+  }
+
+  &__column {
+    @include grid-column(16);
+
+    @include breakpoint(large) {
+      @include grid-column(13.5);
+      @include grid-column-offset(2.5);
+    }
+
+    padding: 0 !important;
+
+    nav {
+      @include breakpoint(large) {
+        text-align: right;
+      }
+    }
+  }
+
+  &__search {
+    @include show-for(large);
+  }
+}

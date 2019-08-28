@@ -1,0 +1,30 @@
+<div class="c-post">
+  {{> static-events-button-group}}
+  {{#repeat 3}}
+  <section class="c-post__list-item">
+    <div class="c-post__content">
+      <h2 class="c-post__heading">
+        <a href="static-{{#if events-demo}}events{{else}}news{{/if}}-single.html">Lorem ipsum dolor</a>
+      </h2>
+      {{#if events-demo}}
+      {{> static-events-detail-box}}
+      {{/if}}
+      {{#unless events-demo}}
+      <figure class="c-image c-image--right">
+        <img src="https://via.placeholder.com/1166x750" alt="" class="c-image--small">
+      </figure>
+      <div class="c-post__meta">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> Posted on <span class="c-post__meta-date"><a href="#0">December 9 2016</a></span> by <span class="c-post__meta-author"><a href="#0">Author Name</a></span>
+      </div>
+      {{/unless}}
+      <p>Lorem ipsum dolor sit amet, at eum docendi euripidis sadipscing, dignissim conceptam percipitur nam an, mel te natum illum veritus. Et usu euismod nominati, cu meis habemus laboramus has, est veritus signiferumque ea. Ne ius stet nostro aeterno, facilis albucius definitionem ut mea.</p>
+      <p><a href="static-news-single.html"><em>Full story</em></a></p>
+    </div>
+  </section>
+  {{/repeat}}
+  {{#unless events-demo}}
+  <div class="c-post__feed-icon">
+    <a href="/rss/"><img src="//www.adelaide.edu.au/global/images/rss.gif" alt="RSS News Feed" width="44" height="16" border="0" title="RSS News Feed"></a>
+  </div>
+  {{/unless}}
+</div>

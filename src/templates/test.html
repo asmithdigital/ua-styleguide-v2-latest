@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <!--[if gt IE 8]><!-->
+            <link href="../assets/css/docs.css" rel="stylesheet" />
+        <!--<![endif]-->
+
+        <script src="../assets/js/vendor/jquery.min.js"></script>
+        <script src="../assets/js/vendor/foundation.min.js"></script>
+        <script src="../assets/js/vendor/modernizr.js"></script>
+        <script src="../assets/js/vendor/what-input.min.js"></script>
+
+        {{ docs }}
+
+        {{#if test-javascript }}
+            <script src="../assets/js/plugins/{{ test-javascript }}.js"></script>
+        {{/if}}
+    </body>
+</html>

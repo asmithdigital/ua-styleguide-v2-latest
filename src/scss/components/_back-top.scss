@@ -1,0 +1,17 @@
+.c-back-top {
+  position: fixed;
+  right: $global-margin;
+  bottom: $global-margin;
+  z-index: 2;
+  display: none;
+  margin: 0;
+
+  a {
+    padding: $global-padding * 0.25 $global-padding * 0.75 $global-padding $global-padding * 0.75;
+  }
+
+  .fa {
+    display: block;
+    font-size: 2em;
+  }
+}

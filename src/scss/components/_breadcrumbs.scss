@@ -1,0 +1,23 @@
+$breadcrumbs-item-uppercase: false;
+$breadcrumbs-item-font-size: null;
+
+.c-breadcrumbs {
+  @extend %anchor-underline-hover-only;
+  @include breadcrumbs-container;
+  position: relative;
+  display: inline-block;
+
+  li {
+    @extend %small-text;
+  }
+
+  .is-disabled {
+    color: $breadcrumbs-item-color-disabled;
+    cursor: not-allowed;
+  }
+
+  &--hidden {
+    @include element-invisible;
+  }
+
+}

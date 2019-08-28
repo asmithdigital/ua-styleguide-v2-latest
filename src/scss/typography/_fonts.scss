@@ -1,0 +1,52 @@
+p,
+a {
+  @include text-wrap;
+}
+
+input,
+label,
+button,
+figcaption,
+a,
+p,
+li,
+th,
+td {
+  @include pick-font-style();
+}
+
+h1 {
+  @include text-wrap;
+  @include anchor-colors($link: inherit, $buttons-not: false);
+
+  &,
+  a {
+    @include pick-font-style(800);
+    text-transform: uppercase;
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  @include text-wrap;
+  @include anchor-colors($link: inherit, $buttons-not: false);
+
+  &,
+  a {
+    @include pick-font-style(600);
+  }
+}
+
+.c-page-title__heading {
+  &,
+  a {
+    @include pick-font-style(700, 'Oswald');
+  }
+}
+
+blockquote {
+  &,
+  a {
+    @include pick-font-style(400, 'Crimson Text Italic', serif);
+  }
+}
+

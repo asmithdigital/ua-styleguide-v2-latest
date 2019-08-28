@@ -1,0 +1,11 @@
+$df-padding: $global-padding;
+$df-padding-small: $global-padding / 2;
+$degree-finder-class: 'c-degree-finder';
+
+$closebutton-color: $dark-gray;
+$closebutton-color-hover: $black;
+
+@import 'degree-finder-autocomplete';
+@import 'degree-finder-grid';
+@import 'degree-finder-layouts';
+@import 'degree-finder-search';

@@ -1,0 +1,9 @@
+# These are search results that lead to the old versions of Style guide.
+-
+  type: old version
+  name: Style guide 1
+  description: Documentation for Style guide 1.0.0
+  link: 'http://styleguide.adelaide.edu.au/'
+  tags:
+    - old
+    - previous

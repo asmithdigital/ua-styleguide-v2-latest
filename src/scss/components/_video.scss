@@ -1,0 +1,23 @@
+.c-video {
+  @include component-grid($use-row-class: true);
+  @include content-grid-children;
+  @include media-object-sections($all-the-headings: true);
+  @include media-object-margin-bottom;
+  width: auto;
+
+  &__section {
+    padding-top: $global-padding;
+  }
+
+  &__responsive-embed {
+    @include responsive-embed($ratio: square);
+
+    &--4-3 {
+      @include responsive-embed($ratio: default);
+    }
+
+    &--16-9 {
+      @include responsive-embed($ratio: widescreen);
+    }
+  }
+}

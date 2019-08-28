@@ -1,0 +1,113 @@
+@import 'variables';
+@import 'util/mixins';
+
+.fa {
+  font-size: $global-icon-font-size;
+
+  .c-header__title-bar & {
+    font-size: 1.5rem;
+  }
+}
+
+// Truncating the text, elipsis by default.
+.u-truncate {
+  @include text-truncate;
+}
+
+// Hide the text for accessibility
+.u-hidden-text {
+  @include element-invisible;
+}
+
+// Reusable hamburger menu icon
+.ua-hamburger-icon {
+  @include hamburger($color: $titlebar-icon-color, $color-hover: $titlebar-icon-color-hover);
+}
+
+// Hidden H1 for content pages only.
+.u-hidden-h1 {
+  @include element-invisible;
+}
+
+// Responsive visibility classes
+@each $size in $breakpoint-classes {
+  @if $size != $-zf-zero-breakpoint {
+    .u-hide-for-#{$size} {
+      @include hide-for($size);
+    }
+
+    .u-show-for-#{$size} {
+      @include show-for($size);
+    }
+  }
+
+  .u-hide-for-#{$size}-only {
+    @include hide-for-only($size);
+  }
+
+  .u-show-for-#{$size}-only {
+    @include show-for-only($size);
+  }
+}
+
+// Intro sized lead paragraph text
+.u-lead-text {
+  font-size: $lead-font-size;
+  font-weight: 300;
+  line-height: $lead-lineheight;
+  margin-bottom: 1em;
+}
+
+.u-small-text {
+  @extend %small-text;
+  @include is-dark-promot-item-inverse;
+  color: $darker-gray;
+}
+
+// Fix for long labels on radio/checkbox inputs
+.u-inline-label-wrapper {
+  margin-bottom: $global-margin;
+
+  [type='checkbox'],
+  [type='radio'] {
+    margin-bottom: 0;
+
+    + label[for] { // sass-lint:disable-line force-attribute-nesting, no-qualifying-elements
+      display: inline;
+    }
+  }
+}
+
+
+// Off canvas
+@include off-canvas-basics;
+
+.o-off-canvas__wrapper {
+  @include off-canvas-wrapper;
+}
+
+.o-off-canvas__content {
+  @include off-canvas-content;
+}
+
+
+// Reveal
+body {
+
+  &.is-reveal-open {
+    overflow: hidden;
+  }
+}
+
+// html gets this class only in iOS
+html {
+
+  &.is-reveal-open,
+  &.is-reveal-open body { // sass-lint:disable-line force-element-nesting
+    position: fixed;
+    min-height: 100%;
+    overflow: hidden;
+    user-select: none;
+  }
+
+}

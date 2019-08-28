@@ -1,0 +1,20 @@
+<div class="o-degree-finder__container{{#if has-right}} has-right-column{{/if}}">
+
+  <article class="o-degree-finder__content" id="ua-main-content" role="main">
+
+    {{#if has-login}}
+    {{> static-login}}
+    {{/if}}
+
+    {{> static-breadcrumbs}}
+
+    {{> body}}
+  </article>
+
+  {{#if has-right}}
+  <div class="o-degree-finder__right">
+    <p>Right column.</p>
+  </div>
+  {{/if}}
+
+</div>

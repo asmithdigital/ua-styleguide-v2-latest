@@ -1,0 +1,169 @@
+{{#if fixed-slider}}
+<div class="o-layout__slider o-layout__slider--mobile">
+  <img src="assets/img/unsplash3-mobile.jpg">
+</div>
+{{/if}}
+
+<div class="o-layout__container">
+
+  {{#if fixed-slider}}
+    {{#unless no-page-title}}
+      {{> static-page-title}}
+    {{/unless}}
+  {{/if}}
+
+  {{#unless hide-site-menu}}
+  <div class="o-layout__main-nav">
+    
+    {{#if services-menu}}
+    {{> static-services-menu}}
+    {{/if}}
+
+    {{#unless services-menu}}
+    {{> static-site-menu}}
+    {{/unless}}
+  
+  </div>
+  {{/unless}}
+
+  <article class="o-layout__main-content" id="ua-main-content" role="main">
+
+    {{#if hidden-h1}}
+    <div class="u-hidden-h1"><h1>I am a hidden H1</h1></div>
+    {{/if}}
+
+    {{#if has-login}}
+    {{> static-login}}
+    {{/if}}
+
+    {{#unless hide-breadcrumb}}
+    {{> static-breadcrumbs}}
+    {{/unless}}
+
+    {{#unless hide-title-data}}
+    <h1>{{ title }}</h1>
+    {{/unless}}
+
+    <div class="o-layout__content-row">  
+
+    {{#unless hide-title-data}}
+      <div class="o-layout__content-column-full">
+        <p class="u-lead-text">{{description}}</p>
+        {{#unless hide-demo-paragraph}}
+        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+        {{/unless}}
+      </div>
+    {{/unless}}
+
+    {{#if profile-grid}}
+    {{> new-column}}
+    {{> profile-grid}}
+    </div>
+    {{/if}}
+
+    {{#unless profile-grid}}
+      
+      {{> new-column}}
+      {{> body}}      
+      </div>
+
+      {{#if campaign}}
+      {{> static-campaign}}
+      {{/if}}
+
+      {{#if content-banner}}
+      {{> new-column}}
+      {{> static-content-banner}}
+      </div>
+      {{/if}}
+
+      {{#if form}}
+      {{> new-column}}
+      {{> static-form}}
+      </div>
+      {{/if}}
+
+      {{#if degree-finder}}
+      {{> new-column}}
+      {{> static-degree-finder}}
+      </div>
+      {{/if}}
+  
+      {{#if autocomplete}}
+      {{> new-column}}
+      {{> static-autocomplete}}
+      </div>
+      {{/if}}
+
+      {{#if featured}}
+      {{> new-column}}
+      {{> static-featured-content}}
+      </div>
+      {{/if}}
+
+      {{#if content-grid}}
+      {{> static-content-grid}}
+      {{/if}}
+
+      {{#if filter-grid-nav}}
+      {{> new-column}}
+      {{#repeat 2}}
+      {{> static-filter-content}}
+      {{/repeat}}
+      </div>
+      {{/if}}
+
+      {{#if data-table}}
+      {{> new-column}}
+      {{> static-datatable}}
+      </div>
+      {{/if}}
+
+      {{#if news-feed-demo}}
+      {{> new-column}}
+      {{> static-news-feed-item}}
+      </div>
+      {{/if}}
+
+      {{#if news-single-demo}}
+      {{> new-column}}
+      {{> static-news-feed-page}}
+      </div>
+      {{/if}}
+
+      {{#if pagination}}
+      {{> new-column}}
+      {{> static-pagination}}
+      </div>
+      {{/if}}
+
+      {{#if pager}}
+      {{> new-column}}
+      {{> static-pager}}
+      </div>
+      {{/if}}
+
+      {{#if rss-feed-demo}}
+      {{> new-column}}
+      {{> static-rss-feed}}
+      </div>
+      {{/if}}
+
+      {{#if media-objects-demo}}
+      {{> new-column}}
+      {{> static-media-object}}
+      </div>
+      {{/if}}
+
+      {{#if video-demo}}
+      {{> new-column}}
+      {{> static-video}}
+      </div>
+      {{/if}}
+
+      {{/unless}}  {{!-- close unless profile grid  --}}
+
+    </div> <!-- /row -->
+  
+  </article>
+</div>

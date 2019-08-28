@@ -1,0 +1,55 @@
+$pagination-item-background-current: $black;
+$pagination-item-padding: 0 $global-padding / 2;
+
+// Pager specific styles
+.c-pager {
+  @include pagination-azlist($item-width: auto, $item-width-small: auto);
+  @include prev-next($next-pseudo-after: true, $margin: 0.25em);
+
+  a,
+  > li.is-disabled { // sass-lint:disable-line force-element-nesting, no-qualifying-elements
+    padding: 0.25em 0.5em;
+  }
+
+  &__previous {float: left;}
+  &__next {float: right;}
+}
+
+// Pagination specific styles
+.c-pagination {
+  @include pagination-azlist;
+  @include prev-next;
+}
+
+// Shared styles
+.c-pager,
+.c-pagination {
+  @include content-grid-children;
+
+  &__ellipsis {
+    border: 0 !important;
+
+    &::after {
+      @include pagination-ellipsis;
+    }
+  }
+
+  &--hidden {
+    @include element-invisible;
+  }
+
+  .is-current {
+    &,
+    a {
+      @include pagination-item-current;
+    }
+
+    a {
+      padding: 0;
+    }
+  }
+
+  .is-disabled {
+    @include pagination-item-disabled;
+  }
+}

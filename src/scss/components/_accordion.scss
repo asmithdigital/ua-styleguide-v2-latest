@@ -1,0 +1,71 @@
+$accordion-content-border: none;
+$accordion-item-color: $black;
+$accordion-item-padding: 1rem;
+$accordion-plusminus: false;
+$accordion-background: null;
+
+// Accordion
+.c-accordion {
+  @include accordion-container;
+  @include content-grid-children;
+  margin: 0 0 $global-margin;
+
+  &__toggle {
+    display: block;
+    padding: $global-padding / 2;
+    text-align: right;
+  }
+
+  &__item {
+    @include accordion-item;
+    margin: 0 0 $global-margin;
+    background: $light-gray;
+  }
+
+  &__title {
+    @extend .fa-angle-down; // sass-lint:disable-line placeholder-in-extend
+    @include accordion-title;
+    text-decoration: none;
+
+    .is-active & {
+      @extend .fa-angle-up; // sass-lint:disable-line placeholder-in-extend
+    }
+
+    &::before {
+      @extend .fa; // sass-lint:disable-line placeholder-in-extend
+      position: absolute;
+      top: 50%;
+      #{$global-right}: 1rem;
+      margin-top: -0.3rem;
+    }
+  }
+
+  &__heading {
+    @include heading-style-anchors-underline($size: 'h6');
+    margin-bottom: 0;
+  }
+
+  &__content {
+    @include accordion-content;
+    @include clearfix;
+    border: 0;
+
+    :last-child & {
+      border-bottom: 0 !important;
+    }
+
+    &.is-active {
+      display: block;
+    }
+
+    ul,
+    ol {
+      margin-bottom: $list-margin-bottom;
+
+      ul,
+      ol {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

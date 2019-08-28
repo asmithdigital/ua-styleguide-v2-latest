@@ -1,0 +1,143 @@
+// FD override vars
+$accordionmenu-arrow-color: $black;
+$closebutton-color: $white;
+$closebutton-color-hover: $white;
+
+// Custom vars
+$sub-menu-top-padding: $global-padding / 2;
+$standard-border: lighten($medium-gray, 5);
+
+// Off-canvas container
+.#{$site-menu} {
+  @include menu-base;
+  @include menu-direction(vertical);
+  @include shared-site-menu-base-styles($desktop-border-bottom-color: $standard-border);
+
+  .ua-standard & {
+    @include shared-site-menu-base-styles($hide-close-button-on-desktop: true, $all-close-button-styles: false);
+  }
+
+  @include breakpoint(large) {
+    .ua-standard & {
+      margin: 0 0 $global-margin;
+      padding-top: $global-padding * 2;
+    }
+  }
+
+  &__container {
+    @include shared-site-menu-off-canvas;
+  }
+
+  li {
+
+    a {
+      border-left: thick solid transparent;
+    }
+  }
+
+  &__item {
+
+    a {
+      &:hover,
+      &:active {
+        border-left: thick solid;
+        background: none;
+
+        @include breakpoint(large) {
+          .ua-standard & {
+            border-left-color: $black;
+          }
+        }
+      }
+    }
+
+    // The current open submenu and the manually opened submenu
+    &.is-current,
+    &.is-open {
+
+      @include breakpoint(large) {
+        .ua-standard & {
+          background: $white;
+        }
+      }
+    }
+
+    &.is-current {
+
+      a {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__submenu {
+    @include menu-base;
+    @include menu-direction(vertical);
+    @include menu-nested;
+    margin-left: 0;
+    padding-#{$global-left}: $menu-nested-margin;
+
+    li {
+      border-top: 0 !important;
+      border-bottom: 0 !important;
+
+      a {
+        padding-top: $global-padding / 2;
+        padding-bottom: $global-padding / 2;
+      }
+
+      .submenu-toggle {
+        height: $global-margin * 2.4;
+      }
+
+      ul {
+        padding-top: $sub-menu-top-padding;
+        padding-bottom: $sub-menu-top-padding;
+      }
+    }
+  }
+
+  .is-accordion-submenu-parent {
+    position: relative;
+
+    > a {
+      padding-right: $accordionmenu-submenu-toggle-width;
+    }
+  }
+
+  .submenu-toggle {
+    @extend .fa; // sass-lint:disable-line placeholder-in-extend
+    @extend .fa-angle-right; // sass-lint:disable-line placeholder-in-extend
+    position: absolute;
+    top: 0;
+    #{$global-right}: 0;
+    width: $accordionmenu-submenu-toggle-width;
+    height: $global-margin * 3.4;
+    color: $white;
+    cursor: pointer;
+
+    @include breakpoint(large) {
+      .ua-standard & {
+        color: $black;
+      }
+    }
+
+    border-#{$global-left}: $accordion-submenu-toggle-border;
+
+    @if $accordionmenu-submenu-toggle-background {
+      background: $accordionmenu-submenu-toggle-background;
+    }
+
+    &[aria-expanded=true] {
+      @extend .fa-angle-down; // sass-lint:disable-line placeholder-in-extend
+    }
+
+    &::after {
+      content: none;
+    }
+  }
+
+  .submenu-toggle-text {
+    @include element-invisible;
+  }
+}

@@ -1,0 +1,33 @@
+// Degree finder autocomplete
+.ui-autocomplete {
+  @extend %autocomplete-wrapper;
+  padding: $df-padding 0;
+
+  @include breakpoint(small only) {
+    right: 0 !important;
+    left: 0 !important;
+  }
+
+  &-category {
+    @include get-header-style(true, 'h4');
+    @include input-item-spacing;
+    margin: $global-margin 0 $global-margin / 2;
+
+    &:first-child {
+      margin-top: $df-padding-small;
+    }
+  }
+}
+
+.ui-menu-item {
+  cursor: pointer;
+
+  &-wrapper {
+    @extend %autocomplete-item;
+    @include input-item-spacing($df-padding-small);
+
+    &.ui-state-active {
+      @extend %autocomplete-active-item;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+$closebutton-color: $white;
+$closebutton-color-hover: $white;
+
+.#{$services-menu} {
+  @include menu-base;
+  @include menu-direction(vertical);
+  @include shared-site-menu-base-styles($border-style: solid);
+  margin-bottom: $global-margin;
+
+  .ua-standard & {
+    @include shared-site-menu-base-styles($hide-close-button-on-desktop: true, $all-close-button-styles: false);
+  }
+
+  &__container {
+    @include shared-site-menu-off-canvas;
+  }
+
+  &__heading {
+    @include get-header-style($header-passed-in: 'h6');
+    @include show-for(large);
+    @include element-invisible;
+    color: get-color(primary);
+    text-transform: uppercase;
+
+    .ua-standard & {
+      @include element-invisible-off;
+    }
+  }
+
+  &__item {
+
+    .ua-standard & {
+      @include breakpoint(large) {
+        background: $lighter-gray;
+
+        &:hover,
+        &:focus {
+          background: $light-gray;
+        }
+      }
+
+      a {
+        @include breakpoint(large) {
+          padding: $global-padding * 1.2 $global-padding * 1.5;
+          color: $anchor-color;
+        }
+      }
+    }
+  }
+
+  &__login {
+    @extend .c-btn; // sass-lint:disable-line placeholder-in-extend
+    text-align: left;
+  }
+}

@@ -1,0 +1,47 @@
+.#{$header}-quicklinks {
+  @include header-menu($font-size-large: 0.9rem);
+
+  .is-dropdown-submenu-parent,
+  .is-accordion-submenu-parent {
+    @include header-menu-dropdown-icon(false, null);
+    position: relative;
+
+    &:before {
+      line-height: $mobile-line-height;
+
+      @include breakpoint(large) {
+        line-height: 1;
+      }
+    }
+
+  }
+
+  .opens-inner > .is-dropdown-submenu {
+    right: 0;
+    left: auto;
+  }
+
+  li {
+    &:hover {
+      background: darken($brand-dark-blue, 5);
+    }
+  }
+
+  &__submenu {
+    margin-left: 0;
+    background: $brand-dark-blue !important;
+    text-align: left;
+
+    @include breakpoint(large) {
+      position: absolute;
+      top: 100%;
+      #{$global-left}: 0;
+      z-index: 1;
+      min-width: $dropdownmenu-min-width;
+    }
+
+    li {
+      display: block;
+    }
+  }
+}

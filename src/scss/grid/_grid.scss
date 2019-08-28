@@ -1,0 +1,188 @@
+// Custom header bottom spacing
+$ua-header-margin-bottom-small: 2rem;
+$ua-header-margin-bottom: $ua-header-margin-bottom-small * 4;
+
+@mixin reusable-collapse-gutter() {
+  &.collapse-gutters {
+    @include grid-column-gutter(0);
+  }
+}
+
+.#{$layout-footer} {
+  padding-top: $global-padding;
+  padding-bottom: $global-padding;
+  color: $white;
+}
+
+.#{$layout-class} {
+  @include shared-content-layout-spacing($padding-bottom: null);
+
+  &__header {
+    width: 100%;
+    margin-bottom: $ua-header-margin-bottom-small;
+
+    @include breakpoint(large) {
+      margin-bottom: $ua-header-margin-bottom;
+    }
+
+    .fixed-vegas-slider & {
+      @include breakpoint(medium) {
+        margin-bottom: $ua-header-margin-bottom * 2;
+      }
+    }
+  }
+
+  &__main-nav,
+  &__main-content {
+    background: $white;
+  }
+
+  &__main-nav {
+    @include mobile-reset();
+    @include grid-column(3.25);
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__main-content {
+    position: relative;
+    z-index: 0;
+
+    @include breakpoint(large) {
+
+      .ua-standard & {
+        @include grid-column(12.75, $gutters: $base-font-size * 4);
+      }
+    }
+  }
+
+  &__local-footer {
+    padding-top: $global-padding;
+    background-color: $lighter-primary;
+  }
+
+  &__slider {
+    width: 100%;
+    margin-top: -$ua-header-margin-bottom-small;
+    overflow: hidden;
+
+    @include breakpoint(large) {
+      margin-top: -$ua-header-margin-bottom;
+    }
+
+    &--fixed {
+      position: absolute;
+      z-index: -1;
+      margin-top: 0;
+    }
+
+    &--mobile {
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+  }
+
+  &__slider-container {
+    position: relative;
+  }
+
+  &__page-title {
+    width: 100%;
+
+    @include breakpoint(large) {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  &__app {
+    @include clearfix;
+  }
+
+  // Generic nested content grid with either full-width/two-column column layout
+  &__content {
+
+    &-row {
+
+      .flexbox & {
+        @include flex-grid-row;
+        @include breakpoint(medium) {
+          @include grid-row-nest;
+        }
+      }
+
+      .no-flexbox & {
+        @include grid-row;
+
+        @include breakpoint(medium) {
+          @include grid-row-nest;
+        }
+      }
+
+      &.collapse-gutters {
+        
+        .flexbox & {
+          @include breakpoint(medium) {
+            @include flex-grid-row;
+          }
+        }
+
+        .no-flexbox & {
+          @include breakpoint(medium) {
+            @include grid-row;
+          }
+        }
+      }
+    }
+
+    &-column {
+      @include generic-grid-columns;
+      float: none !important;
+      width: auto !important;
+
+      &-full {
+        @include magical;
+        @include generic-grid-columns;
+      }
+
+      &-half {
+        @include magical;
+        @include generic-grid-columns($columns: 1/2);
+        @include reusable-collapse-gutter;
+      }
+
+      &-third {
+        @include magical;
+        @include generic-grid-columns($columns: 1/3);
+        @include reusable-collapse-gutter;
+      }
+
+      &-two-thirds {
+        @include magical;
+        @include generic-grid-columns($columns: 2/3);
+        @include reusable-collapse-gutter;
+      }
+
+      &-quarter {
+        @include magical;
+        @include generic-grid-columns($columns: 1/4);
+        @include reusable-collapse-gutter;
+      }
+
+      &-half,
+      &-third,
+      &-two-thirds,
+      &-quarter {
+        @include breakpoint(medium down) {
+          @include generic-grid-columns($columns: 1/2);
+          @include reusable-collapse-gutter;
+        }
+      }
+    }
+  }
+}

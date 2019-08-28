@@ -1,0 +1,13 @@
+blockquote,
+cite {
+  @include is-dark-promot-item-inverse;
+}
+
+blockquote {
+  font-size: 2rem;
+}
+
+::selection {
+  color: $white;
+  background: get-color(primary);
+}

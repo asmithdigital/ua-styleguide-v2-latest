@@ -1,0 +1,31 @@
+<nav class="c-site-menu__container js-site-menu-offcanvas" id="ua-site-menu">
+  <ul class="c-site-menu js-site-menu">
+  {{#each global.site-menu}}
+    <li class="c-site-menu__item{{#ifpage link}} is-active is-current{{/ifpage}}{{#each second-level}}{{#ifpage link}} is-current{{/ifpage}}{{#each third-level}}{{#ifpage link}} is-current{{/ifpage}}{{/each}}{{/each}}">
+      <a href="{{link}}.html">{{text}}</a>
+      {{#if second-level}}
+      <ul class="c-site-menu__submenu{{#ifpage link}} is-active{{/ifpage}}{{#each second-level}}{{#ifpage link}} is-active{{/ifpage}}{{#each third-level}}{{#ifpage link}} is-active{{/ifpage}}{{/each}}{{/each}}">
+        {{#each second-level}}
+        <li{{#ifpage link}} class="is-active"{{/ifpage}}>
+          <a href="{{link}}.html">{{text}}</a>
+          {{#if third-level}}
+          <ul class="c-site-menu__submenu{{#ifpage link}} is-active{{/ifpage}}{{#each third-level}}{{#ifpage link}} is-active{{/ifpage}}{{/each}}">
+            {{#each third-level}}
+            <li{{#ifpage link}} class="is-active"{{/ifpage}}>
+              <a href="{{link}}.html">{{text}}</a>
+            </li>
+            {{/each}}
+          </ul>
+          {{/if}}
+        </li>
+        {{/each}}
+      </ul>
+      {{/if}}
+    </li>
+  {{/each}}
+  </ul>
+  <button class="c-site-menu__close-button" data-close aria-label="Close menu" type="button">
+    Site menu
+    <span aria-hidden="true">&times;</span>
+  </button>
+</nav>

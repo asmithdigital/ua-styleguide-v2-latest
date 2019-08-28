@@ -1,0 +1,11 @@
+.c-link-list {
+  @include component-grid;
+  @include content-grid-children;
+
+  &__title {
+    margin-bottom: $paragraph-margin-bottom;
+    font-size: inherit;
+    line-height: $paragraph-lineheight;
+    color: inherit;
+  }
+}

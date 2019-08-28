@@ -1,0 +1,18 @@
+.c-full-index {
+  margin-left: 0;
+
+  &,
+  ol,
+  ul {
+    counter-reset: item;
+  }
+
+  li {
+    display: block;
+
+    &::before {
+      content: counters(item, '.') ' ';
+      counter-increment: item;
+    }
+  }
+}

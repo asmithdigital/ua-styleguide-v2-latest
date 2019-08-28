@@ -1,0 +1,23 @@
+.c-az-list {
+  @include clearfix;
+  @include content-grid-children;
+  margin: 0 0 $global-margin;  
+
+  > ul {
+    list-style-type: none;
+  }
+
+  &__menu,
+  &__body {
+    margin-left: 0;
+  }
+
+  &__menu {
+    @include pagination-azlist;
+  }
+
+  &__link-list {
+    margin-bottom: $global-margin !important;
+  }
+}
+

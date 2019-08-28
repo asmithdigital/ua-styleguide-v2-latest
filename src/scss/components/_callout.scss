@@ -1,0 +1,30 @@
+.c-callout {
+  @include callout;
+  @include content-grid-children;
+  background: $lighter-primary;
+
+  &__grid {
+    overflow: hidden;
+
+    &-left {
+      @include breakpoint(medium) {
+        float: left;
+        width: 75%;
+        padding-right: $global-padding / 2;
+      }
+    }
+
+    &-right {
+      @include breakpoint(medium) {
+        float: right;
+        width: 25%;
+        padding-left: $global-padding / 2;
+      }
+    }
+  }
+
+  &__close-button {
+    @include close-button;
+    @include close-button-size(medium)
+  }
+}

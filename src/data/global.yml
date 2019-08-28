@@ -1,0 +1,152 @@
+version: 0.41.1
+
+# top menu in the style guide docs header
+header-menu:
+  -
+    title: 'Resources'
+    section:
+    -
+      title: 'Docs'
+      items:
+        -
+          text: 'Web guide'
+          link: 'http://www.adelaide.edu.au/webguide/'
+        -
+          text: 'SLA'
+          link: 'http://styleguide.adelaide.edu.au/service-level-agreement/'
+    -
+      title: 'Templates'
+      items:
+        -
+          text: 'Header & Footer'
+          link: 'https://gitlab.adelaide.edu.au/web-team/ua-styleguide-v2-theme/blob/master/header-footer/header-footer.html'
+
+# site menu demo in the static site
+site-menu:
+    -
+      text: 'Containers'
+      link: 'static'
+      second-level:
+        -
+          text: 'Accordion'
+          link: 'static-accordion'
+        -
+          text: 'Autocomplete'
+          link: 'static-autocomplete'
+        -
+          text: 'A-Z'
+          link: 'static-az-list'
+        -
+          text: 'Degree finder search'
+          link: 'static-degree-finder-search'
+        -
+          text: 'Filter content'
+          link: 'static-filter-content'
+        -
+          text: 'Media object'
+          link: 'static-media-object'
+        -
+          text: 'News feed'
+          link: 'static-news-feed'
+          third-level:
+            -
+              text: 'News single item'
+              link: 'static-news-single'
+        -
+          text: 'Events feed'
+          link: 'static-events-feed'
+          third-level:
+            -
+              text: 'Events single item'
+              link: 'static-events-single'
+        -
+          text: 'RSS feed'
+          link: 'static-rss-feed'
+        -
+          text: 'Tables'
+          link: 'static-table'
+        -
+          text: 'Tabs'
+          link: 'static-tabs'
+    -
+      text: 'Forms'
+      link: 'static-form'
+      second-level:
+        -
+          text: 'Form validation'
+          link: 'static-validate'
+    -
+      text: 'Media'
+      link: 'static-images'
+      second-level:
+        -
+          text: 'Image gallery'
+          link: 'static-image-gallery'
+        -
+          text: 'Interchange'
+          link: 'static-interchange'
+        -
+          text: 'Video'
+          link: 'static-video'
+        -
+          text: 'Audio'
+          link: 'static-audio'
+        -
+          text: 'Progress bar'
+          link: 'static-progress-bar'
+    -
+      text: 'Layouts'
+      link: 'static-standard-layout'
+      second-level:
+        -
+          text: 'Campaign layout'
+          link: 'static-campaign-layout'
+        -
+          text: 'Full width'
+          link: 'static-full-width'
+          third-level:
+            -
+              text: 'Fancy slider'
+              link: 'static-fixed-slider'
+              type: 'third'
+        -
+          text: 'Header footer'
+          link: 'static-header-footer'
+        -
+          text: 'Global assets stand alone styles'
+          link: 'static-global-assets-stand-alone-styles'
+        -
+          text: 'Global assets dynamic loader'
+          link: 'static-global-assets-loader'
+        -
+          text: 'Degree finder'
+          link: 'static-degree-finder'
+        -
+          text: 'Content grid'
+          link: 'static-content-grid'
+        -
+          text: '404'
+          link: 'static-404'
+    -
+      text: 'Typography'
+      link: 'static-typography'
+      second-level:
+        -
+          text: 'Lists'
+          link: 'static-lists'
+        -
+          text: 'Tooltips'
+          link: 'static-tooltips'
+    -
+      text: 'Sliders'
+      link: 'static-slider'
+      second-level:
+        -
+          text: 'Slider alternative'
+          link: 'static-slider-alternative'
+        -
+          text: 'Slider fullscreen'
+          link: 'static-slider-fullscreen'
+        -
+          text: 'Slider 3D'
+          link: 'static-slider-3d'

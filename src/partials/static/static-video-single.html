@@ -1,0 +1,19 @@
+<div class="c-video">
+  {{#unless native-video}}
+  <div class="{{#unless responsive-ratio}}js-responsive-video-embed{{/unless}}{{#if responsive-ratio}}c-video__responsive-embed{{responsive-ratio}}{{/if}}">
+    <iframe width="560" height="320" src="{{#unless custom-video-url}}//www.youtube.com/embed/TadTb5iuSDg{{/unless}}{{#if custom-video-url}}{{custom-video-url}}{{/if}}" frameborder="0" title="YouTube Video" allowfullscreen></iframe>
+  </div>
+  {{/unless}}
+  {{#if native-video}}
+  <video style="width:100%; max-width:100%;" poster="http://www.mediaelementjs.com/images/big_buck_bunny.jpg" preload="none" controls playsinline webkit-playsinline>
+    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4" type="video/mp4">
+  </video>
+  {{/if}}
+  {{#unless hide-video-content}}
+  <div class="c-video__section">
+    <h2 class="c-video__heading"><a href="#0">Dreams feel real while we're in them</a></h2>
+    <p>I'm going to improvise. Listen, there's something you should know about me.</p>
+    <footer><a href="#0" class="c-btn c-btn--hollow">Button</a></footer>
+  </div>
+  {{/unless}}
+</div>

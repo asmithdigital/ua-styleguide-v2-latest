@@ -1,0 +1,8 @@
+.c-skip-to-content {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
+}

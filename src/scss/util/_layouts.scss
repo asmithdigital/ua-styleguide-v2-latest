@@ -1,0 +1,431 @@
+// Shared title bar
+@mixin title-bar(
+  $padding: $titlebar-padding,
+  $background: $titlebar-background,
+  $color: $titlebar-color
+) {
+  @include clearfix;
+  padding: $padding;
+  background: $background;
+  color: $color;
+
+
+  &-left {
+    float: left;
+  }
+
+  &-right {
+    float: right;
+    text-align: right;
+  }
+
+  &-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: $titlebar-text-font-weight;
+  }
+
+  &-menu-icon {
+    font-size: 1.5rem;
+    color: $white;
+  }
+
+  &-icon {
+    display: inline-block;
+    color: $white;
+  }
+}
+
+// Reusable header menu and close button
+@mixin header-menu($border-top-color: $mobile-border-top-color, $border-bottom-color: $mobile-border-bottom-color, $font-size-large: 1.2rem, $not-buttons-anchor-color: true) {
+  @include menu-base;
+  @include menu-direction(vertical);
+  @include anchor-colors($link: $white, $hover: $white, $buttons-not: $not-buttons-anchor-color);
+
+  @include breakpoint(large) {
+    @include menu-direction(horizontal);
+  }
+
+  > li {
+    border-top: 1px dotted $border-top-color;
+    border-bottom: 1px dotted $border-bottom-color;
+
+    @include breakpoint(large) {
+      border-top: 0 !important;
+      border-bottom: 0 !important;
+    }
+  }
+
+  a {
+    padding: $mobile-padding;
+    line-height: $mobile-line-height;
+    text-transform: $mobile-text-transform;
+    white-space: normal;
+
+    @include breakpoint(large) {
+      padding-top: $font-size-large;
+      padding-bottom: $font-size-large;
+      font-size: $font-size-large;
+      line-height: 1;
+      text-transform: capitalize;
+    }
+  }
+
+  &__submenu {
+    display: none;
+
+    &.js-dropdown-active {
+      display: block;
+    }
+
+    a {
+      text-transform: capitalize;
+    }
+  }
+}
+
+// Global footer
+@mixin footer-grid($anchor: false, $anchor-hover: $anchor-color-hover, $desktop-column-size: 8, $reset-column-size: 16) {
+  @extend %anchor-underline-hover-only;
+
+  ul {
+    margin-left: 0;
+    list-style-type: none;
+  }
+
+  @if $anchor {
+    @include anchor-colors($link: $anchor, $hover: $anchor-hover, $element: 'li a, p a');
+  }
+
+  &__container {
+    @include grid-row();
+    padding-top: $global-padding;
+    padding-bottom: $global-padding;
+  }
+
+  &__row {
+    @include clearfix;
+  }
+
+  &__column {
+    @include mobile-reset($reset-size: $reset-column-size, $custom-gutter: $base-font-size * 3.5);
+    @include grid-column($desktop-column-size);
+    margin: 0;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    line-height: $paragraph-lineheight;
+  }
+
+  &__menu {
+    @include menu-base;
+    @include menu-direction(vertical);
+    margin: 0 0 $global-margin;
+
+    a {
+      display: inline-block;
+      padding: 0;
+    }
+
+    &--copyright {
+      @include menu-direction(horizontal);
+      @include menu-simple($global-left, 0);
+      font-size: $global-font-size * 0.9;
+    }
+  }
+
+  &__social {
+    @include shared-social-icon-wrapper;
+  }
+}
+
+// Shared styles for pagination and A-Z list menu
+@mixin pagination-azlist(
+  $item-width: 1.5rem,
+  $item-width-small: 2.5rem
+) {
+  @include pagination-container;
+
+  > li {
+    min-width: $item-width;
+    margin: 0 0 $global-margin / 2;
+    border: 1px solid $black;
+    text-align: center;
+
+    @include breakpoint(small only) {
+      min-width: $item-width-small;
+      font-size: 1.5rem;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        background: $black;
+        color: $white;
+      }
+    }
+
+    &.is-disabled {
+      border: 1px solid $medium-gray;
+
+      a {
+        @include button-disabled(inherit, $medium-gray);
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@mixin shared-content-layout-spacing($content-class-name: 'main-content', $padding-top: $global-padding, $padding-bottom: $global-padding) {
+  &__container {
+    @include grid-row();
+  }
+
+  &__#{$content-class-name} {
+    @include mobile-reset($custom-gutter: $base-font-size * 3.5);
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+
+    @include breakpoint(large) {
+      @include grid-column(16, $gutters: $base-font-size * 4);
+    }
+  }
+}
+
+// Reusable mixin for generic grid columns using flexbox
+@mixin generic-grid-columns($breakpoint: medium, $columns: 16, $margin-bottom: true) {
+  width: 100%;
+
+  &.#{$layout-class}--full-height {
+    .flexbox & {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+  
+  @include breakpoint(medium) {
+
+    .flexbox & {
+      @include flex-grid-column($columns);
+    }
+
+    .no-flexbox & {
+      @include grid-column($columns);
+    }
+  }
+}
+
+// The generic content grid uses flexbox so childeren need to be flex 1 expand 100% height
+// Some components are stand alone with margin bottom but needs to be reset when in content grid
+@mixin content-grid-children {
+  width: 100%;
+
+  .flexbox .#{$layout-class}--full-height & { // sass-lint:disable-line force-element-nesting
+    flex: 1;
+  }
+}
+
+// Resusable icont detailed list used for generic and news/events
+@mixin icon-detail-list($icon-color: quinary) {
+  margin-left: 0;
+  list-style-type: none;
+
+  li {
+    position: relative;
+    padding-left: $global-padding * 1.5;
+  }
+
+  a .fa { // sass-lint:disable-line force-element-nesting
+    position: static;
+  }
+
+  .fa {
+    position: absolute;
+    left: 0;
+    line-height: 1.5rem;
+    color: get-color($icon-color);
+  }
+}
+
+@mixin media-object-margin-bottom() {
+  margin-bottom: $global-margin;
+
+  @include breakpoint(medium) {
+    margin-bottom: $global-margin * 2;
+  }
+}
+
+// Define the heading styles used in media-object-sections() below 
+@mixin shared-media-object-section-heading-styles {
+  @include heading-style-anchors-underline($size: 'h5');
+
+  .has-four-columns & {
+    a {
+      @include breakpoint(small only) {
+        font-weight: 600 !important;
+      }
+    }
+    @include breakpoint(large) {
+      @include heading-style-anchors-underline($size: 'h6');
+    }
+    @include breakpoint(xlarge) {
+      @include heading-style-anchors-underline($size: 'h5');
+    }
+  }
+
+  .is-dark & {
+    @include heading-style-anchors-underline($color: $white, $color-hover: lighten($anchor-color-hover, 50), $self-anchor-color: true);
+  }
+
+  @include breakpoint(small only) {
+    &,
+    a {
+      font-weight: 600 !important;
+    }
+  }
+}
+// Resuable media object sections and heading styles
+@mixin media-object-sections($is-promo: false, $all-the-headings: false) {
+  // &.has-footer {
+  //   .flexbox & {
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
+  // }
+
+  &.is-centered {
+    text-align: center;
+  }
+
+  &__section {
+    @include media-object-section;
+
+    @include breakpoint(medium) {
+      @if $is-promo {
+        &:first-child {
+          padding: 2rem 0 2rem 2rem;
+        }
+      }
+    }
+
+    > :last-child {
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @include breakpoint(small only) {
+      @include media-object-stack;
+    }
+
+    // .has-footer & {
+    //   .flexbox & {
+    //     display: flex;
+    //     flex: 1;
+    //     flex-direction: column;
+
+    //     footer {
+    //       margin-top: auto;
+    //     }
+    //   }
+    // }
+
+    &--content {
+      
+      @include breakpoint(small only) {
+        padding: $global-padding * 1.3 !important;
+
+        .is-thumb &,
+        .is-portrait & {
+          padding-right: 0 !important;
+          padding-left: 0 !important;
+        }
+      }
+
+      @include breakpoint(medium) {
+        padding: 0 $global-padding * 2;
+
+        @if $is-promo {
+          padding: $global-padding * 2 !important;
+        }
+
+        .is-stacked & {
+          padding: $global-padding * 2 !important;
+        }
+      }
+    }
+
+    .is-stacked & {
+      @include breakpoint(medium) {
+        @include media-object-stack;
+      }
+    }
+
+    // Any heading element that sits within the __section of this component will be forced to this size
+    @if $all-the-headings {
+      @include all-the-heading {
+        @include shared-media-object-section-heading-styles;
+      }
+    }
+  }
+  
+  &__heading {
+    @include shared-media-object-section-heading-styles;
+  }
+}
+
+// Background image mixin for minimal banner slider and content banner components
+@mixin background-image-banner(
+  $min-height: 100px, 
+  $min-height-large: 250px,
+  $has-content: false
+  // $color: $white,
+  // $text-alignment: center
+  ) {
+  display: table;
+  width: 100%;
+  
+  min-height: $min-height;
+  background-position: center center; 
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include breakpoint(large) {
+    min-height: $min-height-large;
+  }
+
+  @if $has-content {
+    height: auto !important; 
+    // text-align: $text-alignment; 
+    position: relative;
+    margin-bottom: $global-margin;
+
+    &.is-full-width {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+
+    *:not(.c-btn) {
+      position: relative;
+      z-index: 1;
+      // color: $color !important;
+    }
+
+    &__content {
+      @include grid-row();
+      @include input-wrapper($input-margins: null, $input-margins-medium: null, $background-color: null);
+      
+      &-container {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+}

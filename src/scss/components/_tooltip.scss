@@ -1,0 +1,7 @@
+.has-tip {
+  @include has-tip;
+}
+
+.c-tooltip {
+  @include tooltip;
+}

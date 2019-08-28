@@ -1,0 +1,55 @@
+@mixin shared-profile-layouts(
+  $grid-columns: 16,
+  $reset-gutters: null,
+  $direction-reset: true,
+  $reset-padding-direction: false
+) {
+  @include mobile-reset($reset-breakpoint: small only);
+
+  @if $reset-gutters {
+    @include grid-column($grid-columns, $reset-gutters);
+  } 
+  @else {
+    @include grid-column($grid-columns);
+  }
+
+  @include breakpoint(small only) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  @if $direction-reset {
+
+    @include breakpoint(large) {
+      padding-#{$reset-padding-direction}: 0;
+    }
+  }
+}
+
+.o-profile {
+
+  &__row {
+    @include grid-row;
+
+    @include breakpoint(medium) {
+      @include grid-row-nest;
+    }
+  }
+
+  &__top {
+    @include clearfix;
+    @include shared-profile-layouts($reset-gutters: 0);
+  }
+
+  &__full {
+    @include shared-profile-layouts();
+  }
+
+  &__left {
+    @include shared-profile-layouts($grid-columns: 3.25);
+  }
+
+  &__right {
+    @include shared-profile-layouts($grid-columns: 12.75, $reset-padding-direction: 'right');
+  }
+}

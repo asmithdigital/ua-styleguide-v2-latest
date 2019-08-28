@@ -1,0 +1,31 @@
+{
+  "dest": "src/assets/js/vendor/modernizr.js",
+  "options": [
+    "addTest",
+    "fnBind",
+    "html5printshiv",
+    "setClasses",
+    "testProp"
+  ],
+  "tests": [
+    "audio",
+    "flexbox",
+    "inputtypes",
+    "picture",
+    "srcset",
+    "video",
+    "hiddenscroll",
+    "cssscrollbar"
+  ],
+  "excludeTests": [
+    "hidden"
+  ],
+  "files": {
+    "src": [
+      "app/assets/js/**/*.js",
+      "src/assets/js/**/*.js",
+      "app/assets/css/*.css",
+      "src/assets/css/*.css"
+    ]
+  }
+}

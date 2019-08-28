@@ -1,0 +1,157 @@
+// This file is imported into the global assets CSS file -  global-assets.css
+// All web site and applications reference the global css from the global server
+// The purpose of this file is to enable immediate global updated of colors
+// This is so that University wide color changes can be applied immediately.
+
+$submenu-current-active-background: $mobile-border-top-color;
+
+%background-color-dark {
+  background-color: $brand-dark-blue;
+}
+
+// Footer, logo, page title and header bg color
+// =============================================
+.#{$layout-footer} {
+  @extend %background-color-dark;
+}
+
+// Page title link hover color
+// =============================================
+.#{$page-title} {
+  @extend %background-color-dark;
+
+  &__heading {
+    a {
+      &:hover {
+        color: $lighter-primary;
+      }
+    }
+  }
+}
+
+// Logo hover border bottom
+// =============================================
+.#{$logo} {
+
+  &,
+  &--mobile {
+    @extend %background-color-dark;
+
+    &:hover {
+      border-bottom: 2px solid get-color(secondary);
+    }
+  }
+}
+
+// Header row background colors
+// =============================================
+.#{$header} {
+
+  &__topbar-first {
+    @extend %background-color-dark;
+  }
+
+  &__topbar-second {
+    background-color: get-color(primary);
+  }
+}
+
+// Site menu bg and item border and text colors
+// =============================================
+.#{$services-menu},
+.#{$site-menu} {
+
+  li {
+    border-top-color: $mobile-border-top-color;
+    border-bottom-color: $mobile-border-bottom-color;
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+.#{$services-menu} {
+
+  li {
+    a {
+      .ua-standard & {
+        @include breakpoint(large) {
+          color: $anchor-color;
+        }
+      }
+    }
+  }
+
+  &__login {
+    color: $white !important;
+  }
+}
+
+.#{$site-menu} {
+
+  li {
+    a {
+
+      @include breakpoint(large) {
+        .ua-standard & {
+          color: $black;
+        }
+      }
+    }
+
+    &.is-active {
+
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          border-left-color: get-color(secondary);
+
+          @include breakpoint(large) {
+            .ua-standard & {
+              color: get-color(secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__item {
+
+    a {
+      &:hover,
+      &:active {
+        border-left-color: $white;
+      }
+    }
+
+    &.is-current,
+    &.is-open {
+      background: $submenu-current-active-background;
+    }
+  }
+}
+
+// Shared site, services and header menu colors
+// =============================================
+.#{$services-menu},
+.#{$site-menu},
+.#{$header} {
+
+  &,
+  &__container {
+    @extend %background-color-dark;
+
+    @include breakpoint(large) {
+      .ua-standard & {
+        background: none !important;
+      }
+    }
+  }
+
+  &__close-button {
+    border-bottom-color: $mobile-border-bottom-color;
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{description}}">
+  <link rel="icon" href="{{root}}assets/img/icons/apple-touch-icon-144-precomposed.png" type="image/x-icon">
+  <title>{{#unlesspage 'index'}}{{title}} | {{/unlesspage}}University of Adelaide Style guide</title>
+
+  <!--[if gt IE 8]><!-->
+  {{#if reset-css}}
+  <!-- DO NOT use reset.css in any web site or application at any time EVER -->
+  <!-- reset.css is only for this demo page and is build into app.css and header-footer.css -->
+  <link href="assets/css/reset.css" rel="stylesheet">
+  {{/if}}
+  {{#if static}}
+  <link href="assets/css/app.css" rel="stylesheet">
+  <link href="assets/css/global-assets.css" rel="stylesheet">
+  {{/if}}
+  {{#if header-footer}}
+    {{#unless header-footer-template}}
+  <link href="assets/css/header-footer.css" rel="stylesheet">
+  <link href="assets/css/global-assets.css" rel="stylesheet">
+    {{/unless}}
+  {{/if}}
+  {{#unless static}}
+    {{#unless header-footer}}
+      {{#unless global-assets}}
+  <link href="{{root}}assets/css/docs.css" rel="stylesheet" />
+      {{/unless}}
+    {{/unless}}
+  {{/unless}}
+  {{#if global-assets}}
+  <link href="assets/css/global-assets.css" rel="stylesheet">
+  {{/if}}
+  {{#if header-footer-template}}
+  <link href="//global.adelaide.edu.au/style-guide-v2/{{global.version}}/css/header-footer.css" rel="stylesheet">
+  <link href="//global.adelaide.edu.au/style-guide-v2/latest/css/global-assets.css" rel="stylesheet">
+  {{/if}}
+  <!--<![endif]-->
+
+  {{#if custom-slider}}
+  {{> static-custom-slider-styles}}
+  {{/if}}
+
+</head>

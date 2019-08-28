@@ -1,0 +1,107 @@
+$small-padding: $global-padding;
+$medium-padding: $global-padding * 2;
+$small-margin: $global-margin;
+$medium-margin: $global-margin * 2;
+
+.c-rss-feed {
+  @include clearfix;
+  @include content-grid-children;
+  margin: 0 0 $global-margin;
+  padding: $small-padding $small-padding 0;
+  background: $lighter-gray;
+
+  @include breakpoint(medium) {
+    margin: 0 0 $global-margin * 2;
+    padding: $medium-padding $medium-padding 0;
+  }
+
+  &__row {
+    @include clearfix;
+    @include grid-row-nest;
+  }
+
+  &__column {
+    @include mobile-reset();
+    @include grid-column(8);
+  }
+
+  &__more {
+    float: right;
+    margin: 0 0 $small-margin;
+    text-decoration: underline;
+
+    @include breakpoint(medium) {
+      margin-bottom: $medium-margin;
+    }
+  }
+
+  &__heading {
+    @include heading-style-anchors-underline;
+    margin-bottom: $small-margin;
+
+    @include breakpoint(medium) {
+      margin-bottom: $medium-margin;
+    }
+  }
+
+  &__title {
+    @include heading-style-anchors-underline($resize: false);
+    margin-bottom: $global-margin / 2;
+
+    a {
+      font-weight: 600;
+    }
+  }
+
+  &__section {
+    @include media-object-section($global-padding);
+
+    &:only-child {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    &:first-child {
+      @include breakpoint(small only) {
+        display: block;
+        margin-bottom: $global-margin;
+      }
+      
+      @include breakpoint(medium down) {
+        .#{$layout-class}__content-column-half & {
+          display: block;
+          margin-bottom: $global-margin;
+        }
+      }
+    }
+  }
+
+  &__item {
+    margin: 0 0 $small-margin;
+
+    @include breakpoint(medium) {
+      margin-bottom: $medium-margin;
+    }
+  }
+
+  &__date {
+    width: 70px;
+    padding: $small-padding * 0.75 $small-padding;
+    font-weight: bold;
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+
+    .is-news & {
+      background: $black;
+    }
+
+    .is-events & {
+      background: get-color(quaternary);
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

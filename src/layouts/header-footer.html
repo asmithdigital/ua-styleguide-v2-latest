@@ -1,0 +1,94 @@
+{{> head}}
+
+  <body>
+  {{> static-skip-to-content}}
+
+  <div class="o-off-canvas__wrapper">
+
+    {{#if global-assets-loader}}
+    <div id="ua-search"></div>
+    {{/if}}
+
+    {{#unless global-assets-loader}}
+    {{> static-search}}
+    {{/unless}}
+
+    <div class="o-off-canvas__content" data-off-canvas-content>
+
+      <header class="o-layout__header" id="ua-top" role="banner">
+        {{> static-global-header}}
+      </header>
+
+      <main class="o-layout__main">
+        <div class="o-layout__slider-container">
+          <div class="o-layout__slider">
+            {{> static-minimal-banner}}
+          </div>
+          <div class="o-layout__page-title">
+            <div class="o-layout__container">
+              {{> static-page-title}}
+            </div>
+          </div>
+        </div>
+
+        <div class="o-layout__container">
+          <div class="o-layout__app">
+
+  {{> body}}
+
+          </div>
+        </div>
+
+        <div class="o-layout__app">
+
+  {{> body}}
+
+        </div>
+
+      </main>
+
+      {{#unless hide-local-footer}}
+      <div class="o-layout__local-footer">
+        <div class="o-layout__container">
+          {{> static-local-footer}}
+        </div>
+      </div>
+      {{/unless}}
+
+      <footer  class="o-layout__footer">
+        {{#if global-assets-loader}}
+        <div id="ua-footer"></div>
+        {{/if}}
+        {{#unless global-assets-loader}}
+        {{> static-global-footer}}
+        {{/unless}}
+        {{> static-footer-meta}}
+      </footer>
+
+    </div>
+
+  </div>
+
+  {{> static-back-top}}
+
+  {{#unless header-footer-template}}
+  <script src="{{root}}assets/js/vendor/jquery.min.js"></script>
+  <script src="{{root}}assets/js/header-footer.js"></script>
+  {{/unless}}
+
+  {{#if header-footer-template}}
+  <script src="//global.adelaide.edu.au/style-guide-v2/{{global.version}}/js/vendor/jquery.min.js"></script>
+  <script src="//global.adelaide.edu.au/style-guide-v2/{{global.version}}/js/header-footer.js"></script>
+  {{/if}}
+
+
+  {{#unless global-assets-loader}}
+  {{> global-assets-plugin}}
+  {{/unless}}
+
+  {{#if global-assets-loader}}
+  {{> global-assets-loader}}
+  {{/if}}
+
+  </body>
+</html>

@@ -1,0 +1,634 @@
+// Grid system
+@mixin mobile-reset($reset-breakpoint: medium down, $medium-down-reset: true, $reset-size: 16, $custom-gutter: false, $custom-gutter-size: small only) {
+
+  @if $medium-down-reset {
+    @include breakpoint($reset-breakpoint) {
+      @include grid-column($reset-size);
+      @include grid-column-offset(0);
+    }
+  }
+
+  @if $custom-gutter {
+    @include breakpoint($custom-gutter-size) {
+      @include grid-column(16, $gutters: $custom-gutter);
+      @include grid-column-offset(0);
+    }
+  }
+}
+
+
+@mixin input-item-spacing($top-bottom: 0) {
+  padding: $top-bottom $global-padding;
+
+  @include breakpoint(large) {
+    padding-right: $global-padding * 2;
+    padding-left: $global-padding * 2;
+  }
+}
+
+// Reusable input group styles
+@mixin input-group($button-color: secondary, $input-spacing: true, $mobile-layout: true, $hide-button-text-mobile: false) {
+
+  // sass-lint:disable placeholder-in-extend
+  &__input-group {
+    @extend .input-group;
+
+    &-label {
+      @extend .input-group-label;
+    }
+
+    &-field {
+      @extend .input-group-field;
+      margin-bottom: 0 !important;
+    }
+
+    &-button {
+      @extend .input-group-button;
+      @if $mobile-layout {
+        @include breakpoint(small only) {
+          display: table !important;
+          width: 100%;
+        }
+      }
+
+      button {
+        @if $mobile-layout {
+          @include breakpoint(small only) {
+            display: block !important;
+            width: 100%;
+          }
+        }
+
+        @if $hide-button-text-mobile {
+          @include breakpoint($hide-button-text-mobile) {
+            font-size: 0;
+
+            .fa {
+              padding: 0 0.5em;
+              font-size: initial;
+            }
+          }
+        }
+      }
+    }
+  }
+  // sass-lint:enable placeholder-in-extend
+
+  &__button {
+    @include button(false, get-color($button-color), lighten(get-color($button-color), 5));
+    @include disabled-buttons(get-color($button-color));
+    text-transform: uppercase;
+  }
+
+  @if $input-spacing {
+
+    $height: ($input-font-size + $form-spacing * 2.5);
+
+    &__input-group-field,
+    &__button {
+      height: $height !important;
+    }
+
+    &__input-group-field {
+      @include input-item-spacing($global-padding / 2);
+    }
+  }
+}
+
+@mixin input-wrapper(
+  $wrapper-padding: $global-padding * 2 $global-padding $global-padding,
+  $wrapper-padding-medium: $global-padding * 3 $global-padding * 2 $global-padding * 2,
+  $input-margins: 0 0 $global-margin,
+  $input-margins-medium: 0 0 $global-margin * 2,
+  $background-color: $input-wrapper-background
+) {
+  margin: $input-margins;
+  padding: $wrapper-padding;
+  background: $background-color;
+
+  @include breakpoint(medium) {
+    margin: $input-margins-medium;
+    padding: $wrapper-padding-medium;
+  }
+}
+
+@mixin header-close-button(
+  $background: null,
+  $hide-on-desktop: false,
+  $all-styles: true
+) {
+  padding-top: $global-margin * 3;
+
+  &__close-button {
+
+    @if $all-styles {
+      @include close-button;
+      @include close-button-size(medium);
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: $global-margin * 3;
+      padding: 0 1rem;
+      border-bottom: 1px solid;
+      background: $background;
+      font-size: 1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      span {
+        position: absolute;
+        top: 0.6rem;
+        right: 1rem;
+        font-size: 1.5rem;
+      }
+    }
+
+    @if $hide-on-desktop {
+      @include breakpoint(large) {
+        display: none;
+      }
+    }
+  }
+}
+
+// right menu offcanvas
+@mixin menu-off-canvas($direction: right, $in-canvas: large, $direction-large: false, $base-background: null) {
+  @include off-canvas-base($base-background);
+  @include off-canvas-position($direction);
+  max-width: 100%;
+
+  @if $in-canvas {
+    @include breakpoint($in-canvas) {
+      @include in-canvas;
+      width: 100% !important;
+      visibility: visible !important;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+  @else {
+    
+    @if $direction-large {
+      @include breakpoint(large) {
+        @include off-canvas-position($direction-large);
+      }
+    }
+  }
+}
+
+// Header menu drop down icon
+@mixin header-menu-dropdown-icon($hide-mobile: true, $transform: uppercase) {
+  > a {
+    position: relative;
+    text-transform: $transform;
+
+    &::before {
+      @extend .fa; // sass-lint:disable-line placeholder-in-extend
+      position: absolute;
+      #{$global-right}: 10px;
+      content: $fa-var-angle-down;
+
+      @if $hide-mobile {
+        @include breakpoint(medium down) {
+          content: none;
+        }
+      }
+    }
+
+    @if $hide-mobile {
+      @include breakpoint(large) {
+        padding-right: $global-padding * 2;
+      }
+    }
+    @else {
+      padding-right: $global-padding * 2;
+    }
+  }
+}
+
+// Typography shared css
+@mixin pick-font-style($weight: 400, $custom-font: 'Open Sans', $backup-font: sans-serif) {
+  font-family: $backup-font;
+  font-weight: $weight;
+
+  .fonts-loaded & {
+    font-family: $custom-font, $backup-font;
+  }
+}
+
+// Get the styles for a specific heading element to style a component element.
+@mixin get-header-style($reset-style: false, $header-passed-in: false) {
+  @if $reset-style {
+    @extend %reset-heading-styles;
+  }
+
+  @if $header-passed-in {
+    // Heading styles
+    @each $size, $headers in $header-styles {
+      @include breakpoint($size) {
+        @each $header, $header-defs in $headers {
+          @if $header == $header-passed-in {
+            $font-size-temp: 1rem;
+            @if map-has-key($header-defs, font-size) {
+              $font-size-temp: rem-calc(map-get($header-defs, font-size));
+              font-size: $font-size-temp;
+            }
+          }
+        }
+        line-height: $header-lineheight;
+      }
+    }
+  }
+  @else {
+    @error '`$header-passed-in` is required';
+  }
+}
+
+// Custom anchor colors for a component/element
+@mixin anchor-colors(
+  $link: $anchor-color, 
+  $hover: $anchor-color-hover, 
+  $element: 'a',
+  $self-element: false,
+  $buttons-not: true) {
+
+  @if $self-element {
+    & {
+      @if $buttons-not {
+        &:not(.c-btn) { // Because WYSIWYG wraps everything in a <p> lol
+          color: $link !important;
+        }
+      }
+      @else {
+        color: $link;
+      }
+    }
+  }
+  
+  #{$element} {
+    @if $buttons-not {
+      &:not(.c-btn) { // Because WYSIWYG wraps everything in a <p> lol
+        color: $link !important;
+
+        &:hover,
+        &:focus {
+          color: $hover !important;
+        }
+      }
+    }
+    @else {
+      color: $link;
+
+      &:hover,
+      &:focus {
+        color: $hover;
+      }
+    }
+  }
+}
+
+// Heading styles with hover only underline, body color link, standard link hover and resize option
+@mixin heading-style-anchors-underline(
+  $color: $header-color,
+  $color-hover: $anchor-color-hover,
+  $resize: true,
+  $reset-style: true,
+  $size: 'h4',
+  $not-buttons-anchor-color: true,
+  $self-anchor-color: false) {
+
+  @if $resize {
+    @include get-header-style($reset-style, $size);
+  }
+
+  @extend %anchor-underline-hover-only;
+  @include anchor-colors($link: $color, $hover: $color-hover, $buttons-not: $not-buttons-anchor-color, $self-element: $self-anchor-color);
+}
+
+// Disabled buttons mixin to be shared with default buttons and also component buttons
+@mixin disabled-buttons($color, $is-hollow: false) {
+
+  &.is-disabled,
+  &[disabled] {
+    @if $is-hollow {
+      &,
+      &:hover, &:focus {
+        border: $button-hollow-border-width solid $color;
+        background-color: transparent;
+        color: $color;
+      }
+    }
+    @else {
+      @include button-disabled($color, auto);
+    }
+  }
+}
+
+@mixin shared-site-menu-off-canvas {
+  @include menu-off-canvas(right, false, left);
+
+  .ua-standard & {
+    @include menu-off-canvas;
+  }
+}
+
+// Shared base styles for site menu services menu etc
+@mixin shared-site-menu-base-styles(
+  $border-style: dotted,
+  $desktop-border-bottom-color: $white,
+  $hide-close-button-on-desktop: false,
+  $all-close-button-styles: true) {
+
+  @include header-close-button($hide-on-desktop: $hide-close-button-on-desktop, $all-styles: $all-close-button-styles);
+
+  @if $all-close-button-styles {
+
+    li {
+      width: 100%;
+      border-top: 1px $border-style;
+      border-bottom: 1px $border-style;
+
+      @include breakpoint(large) {
+        .ua-standard & {
+          border-top: 0 !important;
+          border-bottom-color: $desktop-border-bottom-color !important;
+        }
+      }
+    }
+
+    a {
+      padding: $mobile-padding;
+      line-height: $mobile-line-height;
+      text-transform: $mobile-text-transform;
+      white-space: normal;
+    }
+
+    li li a { // sass-lint:disable-line force-element-nesting
+      line-height: $mobile-line-height;
+      text-transform: capitalize;
+
+      @include breakpoint(large) {
+        .ua-standard & {
+          line-height: $mobile-line-height;
+        }
+      }
+    }
+  }
+}
+
+// Social icon shared wrapper and icon styles
+@mixin shared-social-icon-wrapper {
+  @include clearfix;
+  margin: 0 0 $global-margin * 0.75; // Need to account for 0.25rem space on icon
+}
+
+@mixin social-icon-component($class) {
+  .#{$class} {
+    display: inline-block;
+    float: left;
+    margin: 0 0.25rem 0.25rem 0;
+    text-decoration: none !important;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+
+    &--large {
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+// Shared styles for pager and pagination to determine the pseudo element for arrow icon
+@mixin prev-next($next-pseudo-after: false, $margin: null) {
+
+  &__previous {
+    a,
+    &.is-disabled {
+      @extend .fa-angle-left; // sass-lint:disable-line placeholder-in-extend
+
+      &::before {
+        @extend .fa; // sass-lint:disable-line placeholder-in-extend
+        margin-right: $margin;
+      }
+    }
+  }
+
+  &__next {
+    a,
+    &.is-disabled {
+      
+      @if ($next-pseudo-after == true) {
+        &::after {
+          @extend .fa; // sass-lint:disable-line placeholder-in-extend
+          margin-left: $margin;
+          content: $fa-var-angle-right;
+        }
+      } 
+      @else {
+        @extend .fa-angle-right; // sass-lint:disable-line placeholder-in-extend
+
+        &::before {
+          @extend .fa; // sass-lint:disable-line placeholder-in-extend
+        }
+      }
+    }
+  }
+}
+
+
+@mixin campaign-layout-content {
+  @include mobile-reset();
+  padding-top: 1rem;
+
+  @include breakpoint(medium) {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+  
+  &.no-space-above,
+  .no-space-above & {
+    padding-top: 0;
+  }
+
+  &.is-pulled-up,
+  .is-pulled-up & {
+    .c-media-object__row {
+      @include breakpoint(medium) {
+        margin-top: -9rem;
+      }
+    }
+  }
+
+  &.is-centered,
+  .is-centered & {
+    text-align: center;
+  }
+}
+
+// campaign class name map used for inverse colors and background color
+$inverse-colors: (
+  is-black: $black,
+  is-primary: get-color(primary),
+  is-secondary: get-color(secondary),
+  is-quaternary: get-color(quaternary),
+  is-brand-dark: $brand-dark-blue
+);
+
+.#{$inverse-class} {
+  &,
+  *:not([class^='c-']) {
+    color: $white;
+
+    a:not([class^='c-']) {
+      color: $white;
+  
+      &:hover,
+      &:focus {
+        color: lighten($anchor-color-hover, 50);
+      }
+    }
+  }
+}
+
+// Magical reusable mixin for campaign classes and backgrounds using pseudos
+@mixin pseudo-backgrounds ($color){
+  background: $color;
+
+  &:before,
+  &:after {
+    content: '';
+    background: $color;
+  }
+}
+
+@mixin magical() {
+  position: relative;
+  
+  &.is-campaign {
+    @include campaign-layout-content;
+  }
+
+  &.is-pulled-up {
+
+    @include breakpoint(medium) {
+      margin-top: 5rem;
+    }
+  }
+
+  // is-light does not go into the map because we do not want inverse colors applied
+  &.is-light {
+    @include pseudo-backgrounds($lighter-gray);
+  }
+
+  @each $name, $color in $inverse-colors {
+    &.#{$name} {
+      @include pseudo-backgrounds($color);
+    }  
+  }
+
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    width: 10000px;
+    height: 100%;
+    z-index: -1;
+  }
+
+  &:before {
+    right: 0;
+  }
+
+  &:after {
+    margin-right: -10000px;
+    left: 0;
+  }
+}
+
+// Custom mixin for hollow buttons
+@mixin hollow-button($color: $black, $hover-color: $darker-gray, $hover-lighten: true) {
+  @include button-hollow;
+  
+  @if $hover-lighten {
+    @include button-hollow-style($color);
+  }
+  @else {
+    @include button-hollow-style($color, $hover-lightness: $hover-lighten);
+  }
+
+  @include disabled-buttons($color, true);
+
+  &:hover,
+  &:focus {
+    border-color: $hover-color;
+    color: $hover-color;
+  }
+}
+
+// Resuable mixin to include all the headings wrapping whatever styles
+@mixin all-the-heading {
+  h1, h2, h3, h4, h5, h6 {
+    @content;
+  }
+}
+
+@mixin is-dark-promot-item-inverse($color: $white) {
+  .is-dark & {
+    color: $color;
+  }
+}
+
+// TODO: started with anchor borders
+// Global anchor styles mixin
+//$anchor-text-decoration: underline;
+//$anchor-text-decoration-hover: underline;
+//$anchor-color: get-color(primary);
+//$anchor-color-hover: lighten($anchor-color, 8);
+
+//@mixin links-base($color, $link, $hover, $active, $style, $style-hover) {
+//  color: $color;
+//  border-bottom: 1px $style $link;
+//  &:hover {
+//    color: $hover;
+//    border-bottom: 1px $style-hover $hover;
+//  }
+//  &:active {
+//    color: $active;
+//    border-bottom: 1px $style-hover $active;
+//  }
+//}
+//
+//@mixin link-borders(
+//  $include-parent: false,
+//  $new-anchor-color: $anchor-color,
+//  $link: $new-anchor-color,
+//  $hover: $anchor-color-hover,
+//  $active: $anchor-color-hover,
+//  $clear-all-styles: false,
+//  $border-size: '1px',
+//  $anchor-border-style: dotted,
+//  $anchor-border-style-hover: solid) {
+//
+//  a {
+//    @if $clear-all-styles != true {
+//      @include links-base($new-anchor-color, $link, $hover, $active, $anchor-border-style, $anchor-border-style-hover);
+//    } @else {
+//      @include links-base($clear-all-styles, inherit, inherit, inherit, none, none)
+//    }
+//  }
+//
+//  @if $include-parent {
+//    & {
+//      color: $new-anchor-color;
+//    }
+//  }
+//}
+//
+//@mixin heading-styles($color: $black) {
+//  @include link-borders(true, $color, transparent, $anchor-border-style-hover: dotted);
+//}

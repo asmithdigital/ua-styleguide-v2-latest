@@ -1,0 +1,73 @@
+@include foundation-forms;
+
+$close-button-height: 40px;
+$close-button-width: $close-button-height * 1.5;
+$closebutton-color: $white;
+$closebutton-color-hover: $white;
+
+.c-search {
+  @include off-canvas-base($background: $brand-dark-blue);
+  @include off-canvas-position(top, vertical);
+  @include input-group($input-spacing: false, $mobile-layout: false, $hide-button-text-mobile: small only);
+  height: auto;
+  padding: $global-padding 0;
+  overflow-x: visible;
+
+  &__container {
+    @include grid-row();
+  }
+
+  &__form {
+    @include grid-column(16);
+    position: relative;
+    padding-right: 0 !important;
+
+    @include breakpoint(medium) {
+      @include grid-column(9);
+      @include grid-col-pos(7);
+    }
+
+    @include breakpoint(xlarge) {
+      @include grid-column(6);
+      @include grid-col-pos(10);
+    }
+  }
+
+  &__menu {
+    @include menu-base;
+    @include menu-direction(horizontal);
+    @include menu-simple;
+  }
+
+  // Form
+  &__input-group {
+    margin-bottom: 0;
+    padding-right: $close-button-width;
+
+    &-field {
+      position: relative;
+      margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    text-transform: uppercase;
+  }
+
+  &__close-button {
+    @include close-button;
+    @include close-button-size(medium);
+    top: 0;
+    right: 0;
+    width: $close-button-width;
+    height: $close-button-height;
+  }
+}
+
+
+$overlay-color: rgba($white, 0.85);
+
+// Custom overlay class
+.is-search-overlay {
+  background: $overlay-color !important;
+}

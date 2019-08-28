@@ -1,0 +1,95 @@
+$light-menu-item-color: lighten(get-color(primary), 5);
+$dark-menu-item-color: darken(get-color(primary), 5);
+$mega-menu-button-hover: scale-color($white, $lightness: -15%) !default;
+
+.c-mega-menu {
+  @include header-menu($border-top-color: $light-menu-item-color, $border-bottom-color: $dark-menu-item-color, $not-buttons-anchor-color: false);
+  background-color: get-color(primary) !important;
+
+  &__item {
+    @include header-menu-dropdown-icon;
+
+    &:hover,
+    &.is-active {
+      background: $dark-menu-item-color;
+    }
+  }
+
+  &__submenu {
+    @include heading-style-anchors-underline($white, $white, $resize: false, $not-buttons-anchor-color: false);
+    @include menu-base;
+    position: absolute;
+    right: 0;
+    #{$global-left}: 0;
+    z-index: 1;
+    min-width: $dropdownmenu-min-width;
+    padding: $global-padding * 2 $global-padding;
+    background-color: $dark-menu-item-color !important;
+    color: $white;
+    text-align: left;
+
+    &-row {
+      @include grid-row();
+      display: block !important;
+    }
+
+    &-btn {
+      @include button(true, $white, $mega-menu-button-hover, $black);
+      @include disabled-buttons($white);
+      margin-bottom: 1rem !important;
+      color: $black !important;
+      text-decoration: none !important;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    &-column {
+
+      > :last-child {
+        margin-bottom: 0 !important;
+      }
+
+      .has-three-columns & {
+        @include grid-column(5.333);
+      }
+
+      .has-four-columns & {
+        @include grid-column(4);
+      }
+
+      ul:not(:first-child) { // sass-lint:disable-line force-pseudo-nesting
+        margin-top: 0.5rem;
+      }
+
+      li {
+        display: block;
+
+        a {
+          padding: $global-padding / 4  0;
+          font-size: $global-font-size * 0.95;
+          line-height: $paragraph-lineheight;
+        }
+      }
+    }
+
+    &-heading {
+      margin-bottom: $global-margin / 2;
+      font-size: $global-font-size * 1.1;
+      line-height: $paragraph-lineheight;
+      color: $white;
+
+      &,
+      a {
+        text-transform: uppercase !important;
+      }
+
+      a {
+        padding: 0 !important;
+        line-height: inherit !important;
+        color: inherit !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+// When we only want underline on hover
+%anchor-underline-hover-only {
+  a {
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: $anchor-text-decoration-hover;
+    }
+  }
+}
+
+// Shared small font size for <figcaption> and small text utility class
+%small-text {
+  font-size: 0.8rem;
+}
+
+%reset-heading-styles {
+  &,
+  a {
+    font-weight: 400 !important;
+    text-transform: none !important;
+  }
+}
+
+// Inverse colors for anchors within white text
+%inverse-anchors {
+  &,
+  *,
+  a {
+    color: $white;
+  }
+
+  a:hover, // sass-lint:disable-line force-pseudo-nesting
+  a:focus { // sass-lint:disable-line force-pseudo-nesting
+    color: lighten($anchor-color-hover, 50);
+  }
+
+  #{text-inputs()},
+  select,
+  textarea {
+    color: $input-color;
+  }
+}
+
+// shared autocomplete results styles
+%autocomplete-wrapper {
+  position: absolute;
+  z-index: 2;
+  max-height: 400px;
+  margin: 0;
+  background: $white;
+  list-style-type: none;
+  overflow: scroll;
+}
+
+%autocomplete-item {
+  display: block;
+  text-decoration: none;
+}
+
+%autocomplete-active-item {
+  background: $light-gray;
+  color: get-color(primary);
+}
+
+%image-link {
+  display: block;
+  text-decoration: none;
+}
+
+%full-width-image {
+  img {
+    width: 100%;
+  }
+}

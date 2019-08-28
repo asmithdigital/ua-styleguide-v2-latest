@@ -1,0 +1,10 @@
+.c-footer-meta {
+  @include footer-grid($white, $white);
+  color: $white;
+
+  &__menu {
+    @include mobile-reset($medium-down-reset: false, $custom-gutter: $base-font-size * 3.5);
+    @include grid-column(16);
+    font-size: $small-font-size;
+  }
+}

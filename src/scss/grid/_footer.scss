@@ -1,0 +1,51 @@
+// Global footer
+.c-global-footer,
+.c-footer-meta {
+  @include footer-grid($white, $white);
+}
+
+// Footer global
+.c-global-footer {
+
+  &__container {
+    padding-bottom: 0;
+  }
+
+  &__right {
+    @include breakpoint(medium down) {
+      margin-top: $global-margin;
+    }
+  }
+
+  &__go8-logos {
+    @include clearfix;
+    margin-bottom: $global-margin;
+
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__go8-logos-image,
+  &__logo {
+    margin-bottom: $global-margin;
+
+    img {
+      max-width: 200px;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+}
+
+.c-footer-meta {
+
+  &__menu {
+    @include mobile-reset($medium-down-reset: false, $custom-gutter: $base-font-size * 3.5);
+    @include grid-column(16);
+    font-size: $small-font-size;
+  }
+}

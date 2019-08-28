@@ -1,0 +1,24 @@
+<div class="c-page-title">
+
+  {{#unless hide-site-menu}}
+  <div class="c-page-title__right">
+
+    <div class="c-page-title__title-bar" data-hide-for="large">
+      <div class="c-page-title__title-bar-right">
+        {{#if services-menu}}
+        <button class="c-page-title__title-bar-menu-icon" type="button" data-toggle="ua-services-menu"><i class="fa fa-th"></i></button>
+        {{/if}}
+        {{#unless services-menu}}
+        <button class="c-page-title__title-bar-menu-icon" type="button" data-toggle="ua-site-menu"><i class="ua-hamburger-icon"></i></button>
+        {{/unless}}
+      </div>
+    </div>
+
+  </div>
+  {{/unless}}
+  
+  <div class="c-page-title__left">
+    <p class="c-page-title__heading{{#if minimal-banner}} is-small{{/if}}"><a href="static.html">{{#if custom-title}}{{{custom-title}}}{{/if}}{{#unless custom-title}}{{#if campaign}}{{description}}{{/if}}{{#unless campaign}}University of adelaide style guide V2 static site{{/unless}}{{/unless}}</a></p>
+  </div>
+
+</div>

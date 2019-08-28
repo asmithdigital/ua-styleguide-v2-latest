@@ -1,0 +1,22 @@
+.o-degree-finder {
+  @include shared-content-layout-spacing('content');
+
+  &__content {
+
+    @include breakpoint(large) {
+
+      .has-right-column & {
+        @include grid-column(11.7, $gutters: $base-font-size * 4);
+      }
+    }
+  }
+
+  &__right {
+    @include mobile-reset($custom-gutter: $base-font-size * 3.5);
+    @include breakpoint(large) {
+      @include grid-column(4.3);
+      padding-top: $global-padding;
+      padding-bottom: $global-padding;
+    }
+  }
+}

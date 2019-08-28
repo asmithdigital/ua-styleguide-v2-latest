@@ -1,0 +1,109 @@
+.c-filter-nav {
+  @include component-grid($two-column-breakpoint: medium, $column-margin: true);
+  margin-bottom: $global-margin;
+
+  &__column {
+    @include breakpoint(small only) {
+      width: 100%;
+    }
+  }
+
+  &__group {
+    @include button-group;
+    margin: 0 auto $global-margin;
+
+    &.is-centered {
+      display: table;
+    }
+  }
+
+  &__button,
+  &__button--label {
+    @include button($color: $black, $background: $light-gray, $background-hover: get-color(secondary));
+    margin-right: 1px;
+    margin-bottom: 1px;
+    text-decoration: none;
+
+    @include breakpoint(small only) {
+      margin-right: 2px;
+      margin-bottom: 2px;
+    }
+  }
+
+  &__button {
+    &:hover,
+    &:active,
+    &:focus,
+    &.is-checked {
+      background: get-color(secondary);
+      color: $white;
+    }
+  }
+
+  &__button--label {
+      
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      background: $lighter-gray;
+      font-weight: 600;
+      color: inherit;
+      cursor: default;
+    }
+  }
+
+  &__button-box {
+    padding: $global-padding;
+    background: $light-gray;
+    color: $black;
+    text-align: center;
+
+    &:hover,
+    &:focus {
+      background: get-color(secondary);
+      color: $white;
+    }
+
+    * {
+      
+      &,
+      &:hover,
+      &:focus,
+      a:hover & { //sass-lint:disable-line force-pseudo-nesting
+        background: inherit;
+        color: inherit;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    @each $name, $color in $button-palette {
+
+      &.is-#{$name} {
+        @include button-style($color, auto, auto);
+      }
+    }
+
+    &.is-hollow-dark {
+      @include hollow-button;
+    }
+
+    &.is-hollow-light {
+      @include hollow-button($color: $white, $hover-color: $medium-gray);
+    }
+
+    &--title {
+      font-size: 1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+  }
+
+  a,
+  a * {
+    text-decoration: none;
+  }
+}

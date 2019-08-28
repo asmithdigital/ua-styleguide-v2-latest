@@ -1,0 +1,19 @@
+
+version: '2'
+
+services:
+  web:
+    image: uofa/apache2-php7-dev
+    volumes:
+      - .:/web
+    environment:
+      - VIRTUAL_HOST=${PROJECT}.${DOMAIN}
+    networks:
+      default:
+
+  mail:
+    image: helder/mailcatcher
+    environment:
+      - VIRTUAL_HOST=mail.${PROJECT}.${DOMAIN}
+    networks:
+      default:

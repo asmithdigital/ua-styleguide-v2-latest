@@ -1,0 +1,36 @@
+// Config and global styles
+@import 'util/config';
+@import 'util/variables';
+@import 'util/global-colors';
+
+// Custom mixins
+@import 'util/extends';
+@import 'util/mixins';
+@import 'util/layouts';
+@import 'util/component-grid';
+
+// We only want font awesome core and variables so we can extend core and use icon variables
+// We do not want duplicate of all icons in the global-assets.css
+@import 'node_modules/font-awesome/scss/variables';
+@import 'node_modules/font-awesome/scss/core';
+//@import 'typography/icons';
+
+// Images is a custom mixin component
+@import 'components/images';
+@include image-component('c-mega-menu-image');
+
+// The mega menu component
+@import 'components/mega-menu';
+
+// Quicklinks header menu
+@import 'components/quicklinks-header-menu';
+
+// Import socil icons custom component mixin
+@import 'components/social-icons';
+@include social-icon-component('c-global-footer-social-icon');
+
+// The global footer component
+@import 'grid/footer-global';
+
+// The search component
+@import 'components/search';

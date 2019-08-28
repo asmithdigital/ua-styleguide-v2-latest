@@ -1,0 +1,48 @@
+.c-global-footer {
+  @include footer-grid($anchor: $white, $anchor-hover: $white, $reset-column-size: 8);
+  color: $white;
+
+  &__container {
+    padding-bottom: 0;
+  }
+
+  &__title {
+    color: $white;
+  }
+
+  &__left,
+  &__right {
+    @include mobile-reset();
+    @include grid-column(8);
+    padding: 0 !important;
+  }
+
+  &__right {
+    @include breakpoint(medium down) {
+      margin-top: $global-margin;
+    }
+  }
+
+  &__go8-logos {
+    @include clearfix;
+    margin-bottom: $global-margin;
+
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__go8-logos-image,
+  &__logo {
+    margin-bottom: $global-margin;
+
+    img {
+      max-width: 200px;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+}

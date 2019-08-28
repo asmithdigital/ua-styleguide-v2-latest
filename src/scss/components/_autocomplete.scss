@@ -1,0 +1,41 @@
+.c-autocomplete {
+  @include input-group;
+  @include input-wrapper;
+  @include clearfix;
+
+  &__wrapper {
+    @include content-grid-children;
+  }
+
+  &__results {
+    @extend %autocomplete-wrapper;
+    right: 0;
+    left: 0;
+
+    &-item {
+      cursor: pointer;
+
+      &.tt-selectable.is-active { // sass-lint:disable-line force-element-nesting
+        @extend %autocomplete-active-item;
+      }
+
+      &:first-child {
+        margin-top: $df-padding;
+      }
+
+      &:last-child {
+        margin-bottom: $df-padding;
+      }
+
+      &-link {
+        @extend %autocomplete-item;
+        @include input-item-spacing($df-padding-small);
+
+        &:hover,
+        .tt-highlight {
+          @extend %autocomplete-active-item;
+        }
+      }
+    }
+  }
+}

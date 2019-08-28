@@ -1,0 +1,101 @@
+picture {
+  display: block;
+}
+
+@mixin image-width($width: $small-image-width) {
+
+  @include breakpoint(medium) {
+    width: $width;
+    max-width: $width;
+  }
+}
+
+@mixin image-component($class) {
+
+  .#{$class} {
+    margin-bottom: $image-spacing;
+
+    a {
+      padding: 0 !important;
+    }
+
+    @include breakpoint(medium) {
+
+      &.has-caption {
+        display: table;
+        width: 1px;
+
+        &.is-full-width {
+          width: 100%;
+        }
+
+        img {
+          max-width: 100vw; // required for Chrome
+        }
+      }
+    }
+
+    &__link {
+      @extend %image-link;
+    }
+
+    &__caption {
+      @extend %small-text;
+      margin: $image-spacing / 2 0 0;
+      text-align: center;
+
+      a {
+        @include breakpoint(large) {
+          display: inline !important;
+          font-size: inherit !important;
+          text-decoration: $anchor-text-decoration !important;
+        }
+      }
+    }
+
+    &--right,
+    &--left {
+      margin-bottom: $image-spacing;
+    }
+
+    &--right {
+      @include breakpoint(medium) {
+        float: right;
+        margin-left: $image-spacing;
+      }
+    }
+
+    &--left {
+      @include breakpoint(medium) {
+        float: left;
+        margin-right: $image-spacing;
+      }
+    }
+
+    &--thumb {
+      @include image-width($thumb-image-width);
+    }
+
+    &--small {
+      @include image-width($small-image-width);
+    }
+
+    &--large {
+      @include image-width($large-image-width);
+    }
+
+    &--full-width {
+      @include image-width($full-image-width);
+    }
+
+    &__grid {
+      @extend %full-width-image;
+      @include component-grid(
+        $column-name: '-column', 
+        $two-column-breakpoint: small, 
+        $custom-medium-columns: 4, 
+        $custom-medium-up-gutter: (small: 5px, medium: 10px)
+      );
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import 'node_modules/font-awesome/scss/font-awesome';
+
+.ua-dropdown-icon {
+  @include css-triangle(15px, white, down);
+}
+
+// Override any specificity
+.fa {
+  font-style: normal !important;
+}
+
+// external link, window, doc extension icons
+.fa-ext {
+  display: inline !important;
+  font-size: 14px !important;
+}
+
+.fa-file-doc-o,
+.fa-file-docx-o {
+  @extend .fa-file-word-o; // sass-lint:disable-line placeholder-in-extend
+}
+
+.fa-file-xls-o,
+.fa-file-xlsx-o {
+  @extend .fa-file-excel-o; // sass-lint:disable-line placeholder-in-extend
+}

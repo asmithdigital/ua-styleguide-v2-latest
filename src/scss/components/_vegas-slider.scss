@@ -1,0 +1,72 @@
+@import '../../../node_modules/vegas/src/sass/vegas';
+
+.c-vegas-slider {
+  height: 100%;
+
+  &__container {
+    width: 100%;
+    @include breakpoint(medium down) {
+      height: 150px !important;
+    }
+
+    @include breakpoint(large) {
+      height: 450px;
+    }
+
+    &.is-fixed {
+      @include show-for(medium);
+      height: 0;
+
+      @include breakpoint(medium) {
+        height: 800px;
+      }
+    }
+  }
+
+  &__mobile {
+    @include breakpoint(medium) {
+      display: none;
+    }
+  }
+
+  // Make timer taller so page title doesnt look broken by 1px
+  .vegas-timer-progress {
+    background: get-color(secondary) !important;
+  }
+
+  .vegas-timer {
+    top: 0 !important;
+    bottom: auto !important;
+  }
+
+  // sass-lint:disable no-ids
+  #vegas-slider-next,
+  #vegas-slider-previous {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    opacity: 0.8;
+    background: center center no-repeat;
+    background-size: cover;
+    font-size: 2rem;
+    color: $white;
+  }
+
+  #vegas-slider-next {
+    right: 10px;
+    left: auto;
+    transform: translateY(-50%);
+  }
+
+  #vegas-slider-previous {
+    right: auto;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+  // sass-lint:enable no-ids
+}

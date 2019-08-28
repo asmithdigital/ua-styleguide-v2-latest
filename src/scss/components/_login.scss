@@ -1,0 +1,24 @@
+.c-login {
+  @extend %anchor-underline-hover-only;
+  margin: 0 0 $global-margin;
+  overflow: hidden;
+
+  @include breakpoint(medium) {
+    display: inline-block;
+    float: right;
+    margin: 0;
+  }
+
+  &__link {
+    @extend %small-text;
+    float: left;
+    padding: $global-padding / 2;
+    border: 1px solid $light-primary;
+
+    @include breakpoint(medium) {
+      float: none;
+      padding: 0;
+      border: 0;
+    }
+  }
+}

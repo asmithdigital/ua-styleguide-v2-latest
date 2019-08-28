@@ -1,0 +1,83 @@
+<div class="c-degree-finder{{#unless campaign}} is-standard{{/unless}} home-df">
+  <div class="c-degree-finder-advanced__content">
+    <h4 class="c-degree-finder__title">
+      <a href="#0" class="c-degree-finder__title-link">{{#if degree-finder-title}}{{degree-finder-title}}{{/if}}{{#unless degree-finder-title}}Lorem Ipsum is simply dummy text{{/unless}}</a>
+    </h4>
+    {{#unless hide-degree-finder-paragraph}}
+    <p>Lorem Ipsum is simply <a href="#0">dummy text of the</a> printing and typesetting industry. <a href="#0">Lorem Ipsum has</a> been the industry's standard.</p>
+    {{/unless}}
+    <div class="c-degree-finder__search">
+      <form id="df-searchform-action" method="get" action="//www.adelaide.edu.au/degree-finder/">
+        <div class="c-degree-finder__input-group">
+          <input id="df-searchfield-new" class="c-degree-finder__input-group-field" name="v__s" placeholder="e.g. Engineering" type="text" data-df-year="2016">
+          <input type="hidden" value="view" name="">
+          <input type="hidden" value="program.source_program" name="">
+          <input type="hidden" value="1" name="">
+          <div class="c-degree-finder__input-group-button">
+            <button class="c-degree-finder__button" id="ui-widget-search-search-btn" type="submit" title="Search the website for this term">Search</button>
+          </div>
+        </div>
+        {{#unless hide-degree-finder-advanced}}
+        <div class="c-degree-finder-advanced__wrap js-degree-finder-advanced">
+          <div class="c-degree-finder-advanced has-four-columns">
+            <div class="c-degree-finder-advanced__column">
+              <label for="adv_acad_career">Level of Study</label>
+              <select id="adv_acad_career" name="">
+                <option value="0" selected="">All</option>
+                <option value="8">Higher Degree by Research</option>
+              </select>
+            </div>
+            <div class="c-degree-finder-advanced__column">
+              <label for="adv_degree_type">Degree Type</label>
+              <select id="adv_degree_type" name="">
+                <option value="0" selected="">All</option>
+                <option value="17">Advanced Certificate</option>
+              </select>
+            </div>
+            <div class="c-degree-finder-advanced__column">
+              <label for="adv_atar">ATAR</label>
+              <select id="adv_atar" name="">
+                <option value="0" selected="">All</option>
+                <option value="65">65-69</option>
+              </select>
+            </div>
+            <div class="c-degree-finder-advanced__column">
+              <label for="adv_year">Year</label>
+              <select id="adv_year" name="">
+                <option value="2019">2019</option>
+                <option value="2018" selected="">2018</option>
+              </select>
+            </div>
+          </div>
+          <div class="c-degree-finder-advanced has-three-columns">
+            <div class="c-degree-finder-advanced__column">
+              <label for="adv_subject">Subject Area</label>
+              <select id="adv_subject" name="">
+                <option value="0" selected="">All</option>
+                <option value="1">Accounting</option>
+              </select>
+            </div>
+            <div class="c-degree-finder-advanced__column">
+              <label for="adv_career">Career</label>
+              <select id="adv_career" name="">
+                <option value="0" selected="">All</option>
+                <option value="549">Academic</option>
+              </select>
+            </div>
+            <div class="c-degree-finder-advanced__column">
+              <label>&nbsp;</label>
+              <a href="#0" class="c-btn c-btn--secondary">Find</a>
+            </div>
+          </div>
+        </div>
+        <div class="c-degree-finder-advanced__toggle js-degree-finder-advanced-toggle">
+          <a href="#">Advanced</a>
+        </div>
+        {{/unless}}
+      </form>
+    </div>
+    {{#unless hide-degree-finder-paragraph}}
+    <p>Lorem <a href="#0">bacon ipsum</a>.</p>
+    {{/unless}}
+  </div>
+</div>

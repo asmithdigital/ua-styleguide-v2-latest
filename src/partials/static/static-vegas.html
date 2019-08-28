@@ -1,0 +1,12 @@
+<div class="c-vegas-slider__container {{#if fixed-slider}}is-fixed{{/if}}"{{#if slider-height}} style="height: {{slider-height}}"{{/if}}>
+  <div class="c-vegas-slider js-vegas-slider{{#if fixed-slider}}-is-fixed{{/if}}"
+       data-vegas-slides='[
+        {"src": "assets/img/unsplash4.jpg", "valign": "top"},
+        {"src": "assets/img/unsplash4.jpg", "video": {"src": ["assets/video/video.mp4"], "loop": "false", "mute": "true"}},
+        {"src": "assets/img/unsplash3.jpg"}
+       ]'
+       {{#if custom-slider-transition-duration}}data-vegas-transition-duration="1000"{{/if}}>
+{{#if slider-arrows}}<div class="js-vegas-slider__navigation"><a href="#" id="vegas-slider-previous"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+    <a href="#" id="vegas-slider-next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a></div>{{/if}}
+  </div>
+</div>

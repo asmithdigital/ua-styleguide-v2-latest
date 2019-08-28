@@ -1,0 +1,54 @@
+.#{$degree-finder-class} {
+  @include input-group;
+  @include content-grid-children;
+
+  @include breakpoint(large) {
+    padding: 0 $df-padding;
+  }
+
+  &__title {
+    @include heading-style-anchors-underline($reset-style: false, $size: 'h3');
+
+    &,
+    a {
+      text-transform: none;
+    }
+  }
+
+  &__search {
+    @include breakpoint(medium) {
+      width: 75%;
+      margin-right: auto;
+      margin-left: auto;
+
+      .is-standard & {
+        width: 100%;
+      }
+    }
+  }
+
+  &-advanced {
+    @include component-grid;
+    text-align: left;
+
+    &__column {
+      margin-bottom: 0;
+
+      .c-btn {
+        display: block;
+        height: ($input-font-size * unitless-calc($input-line-height)) + (get-side($input-padding, 'top') + get-side($input-padding, 'bottom')) - rem-calc(1);
+        padding: $input-padding;
+        line-height: $input-line-height;
+      }
+    }
+
+    &__toggle {
+      margin-bottom: $global-margin;
+      text-align: right;
+    }
+  }
+
+  &.is-standard {
+    @include input-wrapper;
+  }
+}

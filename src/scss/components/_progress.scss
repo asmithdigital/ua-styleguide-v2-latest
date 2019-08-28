@@ -1,0 +1,35 @@
+$progress-height: 3rem;
+$progress-background: $white;
+$progress-margin-bottom: $global-margin / 2;
+$progress-meter-background: get-color(primary);
+
+.c-progress {
+  margin-bottom: $global-margin;
+
+  &__container {
+    @include progress-container;
+    border: 2px solid $medium-gray;
+  }
+
+  &__meter {
+    @include progress-meter;
+
+    &-text {
+      @include progress-meter-text;
+      font-weight: normal;
+    }
+  }
+
+  &__text {
+    margin-bottom: $global-margin;
+    overflow: hidden;
+
+    &-left {
+      float: left;
+    }
+
+    &-right {
+      float: right;
+    }
+  }
+}

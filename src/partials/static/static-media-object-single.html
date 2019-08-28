@@ -1,0 +1,17 @@
+<div class="c-media-object {{#unless not-stacked}}is-stacked{{/unless}}"{{#if equaliser}}data-equalizer-watch{{/if}}>
+  <div class="c-media-object__section">
+    <div class="c-media-object__image-wrapper">
+      {{#unless title-has-link}}<a href="#0" class="c-media-object__image-link">{{/unless}}
+        {{#unless no-title-tag}}<div class="c-media-object__{{#unless has-title}}tag{{/unless}}{{#if has-title}}title{{/if}}"><p>Hello{{#if title-has-link}} <a href="#0">with a link</a>{{/if}}</p></div>{{/unless}}
+        <img src="//via.placeholder.com/{{#unless alternate-image-size}}1166x875{{/unless}}{{#if alternate-image-size}}{{alternate-image-size}}{{/if}}/">
+      {{#unless title-has-link}}</a>{{/unless}}
+    </div>
+  </div>
+  {{#unless no-content}}
+  <div class="c-media-object__section c-media-object__section--content">
+    <h2 class="c-media-object__heading"><a href="#0">Entrepreneurship dreams feel real while we're in them</a></h2>
+    <p>I'm going to improvise. {{#unless short-text}}Listen, there's something you should know about me.{{/unless}}</p>
+    <footer><a href="#0" class="c-btn c-btn--hollow">Button</a></footer>
+  </div>
+  {{/unless}}
+</div>

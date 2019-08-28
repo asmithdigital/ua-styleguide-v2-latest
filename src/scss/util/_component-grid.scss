@@ -1,0 +1,166 @@
+// Reusable base styles for row element.
+%reusable-component-grid-row-base {
+  @include clearfix;
+  clear: both;
+}
+
+// Reusable mixin for the row element to determine nested grid row gutters.
+@mixin reusable-grid-row-custom-gutter($use-row-class, $new-gutter) {
+  @if $use-row-class {
+    &__row {
+      @include grid-row-nest($gutters: $new-gutter);
+    }
+  } 
+  @else {
+    @include grid-row-nest($gutters: $new-gutter);
+  }
+}
+
+// =========================
+//  The Component grid mixin
+// =========================
+@mixin component-grid(
+  $grid-row-nest: true, 
+  $grid-sizes: (
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7
+  ),
+  $two-column-breakpoint: medium,
+  $three-column-breakpoint: large, 
+  $four-column-breakpoint: large,
+  $five-column-breakpoint: large,
+  $six-column-breakpoint: large,
+  $seven-column-breakpoint: large,
+  $custom-medium-columns: null,
+  $custom-medium-up-gutter: false,
+  $column-name: '__column', 
+  $use-row-class: false,
+  $column-margin: false) {
+  
+  // Reset the gutter variable if custom gutter is passed in
+  $new-grid-column-gutter: null;
+  @if $custom-medium-up-gutter {
+    $new-grid-column-gutter: $custom-medium-up-gutter;
+  } 
+  @else {
+    $new-grid-column-gutter: $grid-column-gutter;
+  }
+
+  // Base styles for the row element.
+  @if $use-row-class {
+    &__row {
+      @extend %reusable-component-grid-row-base;
+    }
+  } 
+  @else {
+    @extend %reusable-component-grid-row-base;
+  }
+
+  // If using nested row, set the gutter to the two-column-breakpoint
+  // Then reset the custom gutter class for medium up only, if required
+  @if $grid-row-nest {
+    @include breakpoint($two-column-breakpoint) {
+      @include reusable-grid-row-custom-gutter($use-row-class, $grid-column-gutter);
+    }
+
+    // Apply the custom gutter to the row reset mdeium up as well.
+    @if $custom-medium-up-gutter {
+      @include breakpoint(medium) {
+        @include reusable-grid-row-custom-gutter($use-row-class, $new-grid-column-gutter);
+      }
+    }
+  }
+
+  // Column class can be customed per component
+  &#{$column-name} {
+    @if $column-margin {
+      margin-bottom: $global-margin;
+    }
+
+    // Every component gets the two column as default. 
+    // This two column class may be reset to determine which breakpoint becomes two column.
+    @include breakpoint($two-column-breakpoint) {
+      @include grid-column(8);
+
+      &:last-child {
+        @include grid-col-end;
+      }
+
+      &:nth-child(2n+3) {
+        clear: left;
+      }
+
+      .is-full-width & {
+        @include grid-column(16);
+
+        &:nth-child(2n+3) {
+          clear: none;
+        }
+      }
+    }
+
+    // Loop the column grid sizes list variable
+    @each $name, $size in $grid-sizes {
+
+      // Check for a custom medium column number. This allows a componentent to choose a different grid for medium if they choose.
+      // Useful when using more than 5 columns and want to switch to 3 or 4 columns on medium to avoid squashed components
+      @if $custom-medium-columns {
+        @include breakpoint(medium) {
+
+          .has-#{$name}-columns & {
+            @include grid-column(1 / $custom-medium-columns, $gutters: $new-grid-column-gutter);
+
+            &:nth-child(2n+3) {
+              clear: none;
+            }
+
+            &:nth-child(#{$custom-medium-columns}n+#{$custom-medium-columns + 1}) {
+              clear: left;
+            }
+          }
+        }
+      }
+
+      // While still in loop, check the $size and determine the breakpoint variable to use
+      $breakpoint: medium;
+      @if $size == 3 {
+        $breakpoint: $three-column-breakpoint; 
+      } 
+      @else if $size == 4 {
+        $breakpoint: $four-column-breakpoint;
+      } 
+      @else if $size == 5 {
+        $breakpoint: $five-column-breakpoint;
+      } 
+      @else if $size == 6 {
+        $breakpoint: $six-column-breakpoint;
+      } 
+      @else if $size == 7 {
+        $breakpoint: $seven-column-breakpoint;
+      }
+
+      // Generate each class name based on the grid sizes list and determine the nth-child() for clearing float.
+      @include breakpoint($breakpoint) {
+
+        .has-#{$name}-columns & {
+          @include grid-column(1 / $size, $gutters: $new-grid-column-gutter);
+
+          &:last-child {
+            @include grid-col-end;
+          }
+
+          &:nth-child(2n+3) {
+            clear: none;
+          }
+
+          &:nth-child(#{$size}n+#{$size + 1}) {
+            clear: left;
+          }
+        }        
+      }
+    }
+  }
+}

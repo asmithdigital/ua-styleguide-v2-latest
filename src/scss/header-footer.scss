@@ -1,0 +1,54 @@
+// Config and global styles
+@import 'util/config';
+@import 'util/variables';
+@import 'util/framework';
+
+// Custom mixins
+@import 'util/extends';
+@import 'util/mixins';
+@import 'util/layouts';
+@import 'util/component-grid';
+
+// Custom header footer theme
+// ===========================
+
+// Typography
+@import 'typography/icons';
+@import 'typography/font-face';
+
+// Scope native elements and utilities
+.o-layout__local-footer,
+.o-layout__footer,
+.o-layout__header {
+  @import 'util/global-utilities';
+  @import 'components/images';
+}
+
+// Scope fonts
+.c-page-title,
+.c-search,
+.o-layout__local-footer,
+.o-layout__footer,
+.o-layout__header {
+  //@include foundation-typography-base;
+  @import 'typography/fonts';
+}
+
+// Admin header-footer includes
+@import 'components/buttons';
+@import 'components/page-title';
+@import 'components/minimal-banner';
+
+// Layouts
+@import 'grid/grid';
+@import 'grid/header';
+@import 'grid/footer-meta';
+
+// Components
+@import 'components/social-icons';
+@import 'components/local-footer';
+@import 'components/back-top';
+@import 'components/skip-to-content';
+
+// Required to active component mixins
+@include social-icon-component('ua-social-icon');

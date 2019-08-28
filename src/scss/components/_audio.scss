@@ -1,0 +1,57 @@
+audio,
+.mejs__audio {
+  @include content-grid-children;
+  display: block;
+  min-width: 1px;
+  margin-bottom: $global-margin;
+
+  .c-widget &,
+  .c-audio-playlist & {
+    margin-bottom: 0;
+  }
+}
+
+.c-audio-playlist {
+  @include content-grid-children;
+  clear: both;
+  margin: 0 0 $global-margin;
+  border: 1px solid darken($table-striped-background, 5);
+  background: $body-background;
+
+  tbody {
+    border: 0;
+  }
+
+  caption,
+  th {
+    text-align: left;
+  }
+
+  a {
+
+    &.is-active {
+      font-weight: bold;
+      color: get-color(secondary);
+    }
+  }
+
+  &__track-info-text {
+    margin-bottom: 0;
+    padding: $table-padding;
+    background: $table-striped-background;
+  }
+
+  &__caption {
+    padding: $table-padding;
+
+    &-text {
+      margin-bottom: 0;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+  }
+
+  .c-table {
+    margin-bottom: 0;
+  }
+}

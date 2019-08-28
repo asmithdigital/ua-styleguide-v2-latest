@@ -1,0 +1,54 @@
+<div class="rev_slider_wrapper {{#if slider-fullscreen}}fullscreen-container{{/if}}" style="background-color:#000000;padding:0px;">
+
+    <div id="rev_slider_1" class="rev_slider tp-overflow-hidden {{#if slider-fullscreen}}fullscreenbanner{{/if}}" data-version="5.4.5" style="display:none">
+      <!-- BEGIN SLIDES LIST -->
+      <ul>
+      
+        {{#unless hide-slider-standard}}
+        {{> static-slide-standard}}
+        {{> static-slide-youtube}}
+        {{> static-slide-local-video}}
+        {{/unless}}
+
+        {{#unless hide-slider-alternative}}
+        {{> static-slide-panorama}}
+        {{> static-slide-distortion}}
+        {{> static-slide-beforeafter}}
+        {{/unless}}
+
+        {{#if slider-3d}}
+        {{> static-slide-local-video}}
+        {{/if}}
+
+      </ul><!-- END SLIDES LIST -->
+  
+      <!-- ******************* -->
+      <!-- BEGIN STATIC LAYERS -->
+      <!-- ******************* -->
+      <div class="tp-static-layers">
+        <!-- PLAY?PAUSE TOGGLE SLIDE STATIC LAYER -->
+        <div class="tp-caption tp-resizeme tp-static-layer" 
+          id="pauseButton" 
+          data-x="left" 
+          data-y="bottom" 
+          data-hoffset="30" 
+          data-voffset="30"
+          data-type="text" 
+          data-actions='[{"event":"click","action":"toggleslider","delay":""}]'
+          data-responsive_offset="on" 
+          data-startslide="0" 
+          data-endslide="999" 
+          data-frames='[{"delay":2000,"speed":300,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+          style="z-index: 11;font-size: 16px;color: #ffffff;cursor:pointer;">
+          <div class="rs-untoggled-content"><i class="fa fa-play"></i> <span class="u-hidden-text">play slide</span></div><div class="rs-toggled-content"><i class="fa fa-pause"></i> <span class="u-hidden-text">pause slide</span></div>
+        </div>
+        <!-- END STATIC LAYER -->
+
+      </div>
+      <!-- END STATIC LAYERS -->
+  
+      <div class="tp-bannertimer tp-bottom" style="height: 5px; background-color: rgba(0,0,0,.5)"></div>
+  
+    </div><!-- END SLIDER CONTAINER -->
+  
+  </div><!-- END SLIDER CONTAINER WRAPPER -->

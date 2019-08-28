@@ -1,0 +1,41 @@
+//  Apply an overlay color with opacity to an element
+@mixin overlay-background(
+  $overlay-color: $black,
+  $overlay-opacity: 0.5
+) {
+  &::before {
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    background: rgba($overlay-color, $overlay-opacity);  // sass-lint:disable-line no-color-literals
+    content: ''; 
+  }
+}
+
+// Reusable less more mixin for the u-overlay utility
+@mixin overlay-less-more($color) {
+  &-less {
+    @include overlay-background($overlay-color: $color, $overlay-opacity: 0.25);
+  }
+
+  &-more {
+    @include overlay-background($overlay-color: $color, $overlay-opacity: 0.75);
+  }
+}
+
+.u-overlay {
+  @include overlay-background;
+  @include overlay-less-more($color: $black);
+
+  &--light {
+    @include overlay-background($overlay-color: $white);
+    @include overlay-less-more($color: $white)
+  }
+}
+
+.c-content-banner {
+  @include background-image-banner($has-content: true);
+}

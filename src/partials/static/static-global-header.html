@@ -1,0 +1,49 @@
+<div class="c-header__title-bar">
+  <div class="c-header__title-bar-left">
+    <a href="/" class="c-header__logo--mobile">
+      <img alt="University of Adelaide homepage" src="assets/img/ua-logo.png">
+    </a>
+  </div>
+  <div class="c-header__title-bar-right">
+    <a href="#0" class="c-header__title-bar-icon" data-toggle="ua-search"><i class="fa fa-search"></i></a>
+    <a href="#0" class="c-header__title-bar-icon" data-toggle="ua-header-menu"><i class="fa fa-chevron-down"></i></a>
+  </div>
+</div>
+
+<div class="c-header" id="ua-header-menu">
+
+  <div class="c-header__topbar-first">
+    <div class="c-header__container">
+      <a href="/" class="c-header__logo">
+        <img alt="University of Adelaide homepage" src="assets/img/ua-logo.png">
+      </a>
+      <div class="c-header__column">
+        {{#if global-assets-loader}}
+        {{> static-quicklinks-menu-simple}}
+        {{/if}}
+        {{#unless global-assets-loader}}
+        {{> static-quicklinks-menu}}
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+
+  <div class="c-header__topbar-second">
+    <div class="c-header__container">
+      <div class="c-header__column">
+        {{#if global-assets-loader}}
+        {{> static-mega-menu-simple}}
+        {{/if}}
+        {{#unless global-assets-loader}}
+        {{> static-mega-menu}}
+        {{/unless}}
+      </div>
+    </div>
+  </div>
+
+  <button class="c-header__close-button" data-close aria-label="Close reveal" type="button">
+    Menu
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+</div> <!-- #ua-header-menu -->

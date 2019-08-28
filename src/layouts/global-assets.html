@@ -1,0 +1,21 @@
+{{> head}}
+
+<body class="o-layout__footer">
+
+  {{> static-search}}
+  {{> static-quicklinks-menu}}
+  {{> static-mega-menu}}
+  {{> static-global-footer}}
+
+  <!-- Modernizr, jQuery and Foundation are only required if you are not including all.jquery.js -->
+  <!-- This is because they are already built into app.jquery.js -->
+  <!-- Modernizr and Foundation are also built into header-footer.js -->
+  <!-- However they are required dependencies for global-assets-plugin.js -->
+  <script src="{{root}}assets/js/vendor/modernizr.js"></script>
+  <script src="{{root}}assets/js/vendor/jquery.min.js"></script>
+  <script src="{{root}}assets/js/vendor/foundation.min.js"></script>
+
+  {{> global-assets-plugin}}
+
+</body>
+</html>

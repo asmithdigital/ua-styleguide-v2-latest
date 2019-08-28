@@ -1,0 +1,162 @@
+$mediaobject-section-padding: 0;
+$media-object-background: $lighter-gray;
+$tag-background: rgba(get-color(secondary), 0.7);
+$tag-background-hover-lightness: 20%;
+$tag-background-hover: scale-color($tag-background, $lightness: $tag-background-hover-lightness);
+$title-background: rgba($black, 0.7);
+$tag-background-hover-lightness: -40%;
+$title-background-hover: scale-color($tag-background, $lightness: $tag-background-hover-lightness);
+
+@mixin media-object($is-promo: false, $background-color: $media-object-background, $background-dark-color: $brand-dark-blue, $dark-font-color: $white) {
+  @include component-grid($use-row-class: true);
+  @include content-grid-children;
+  @include media-object-sections($is-promo);
+  @include media-object-margin-bottom;
+
+  @if $is-promo {
+    background: $background-color;
+
+    &.is-dark {
+      background: $background-dark-color !important;
+      color: $dark-font-color;
+
+      a:not([class^='c-']) { //sass-lint:disable-line force-pseudo-nesting
+        color: $white;
+
+        &:hover,
+        &:focus {
+          color: lighten($anchor-color-hover, 50);
+        }
+      }
+    }
+  }
+  @else {
+    @include breakpoint(small only) {
+      background: $background-color;
+
+      .is-thumb &,
+      .is-portrait & {
+        background: transparent;
+      }
+    }
+  }
+
+  @include breakpoint(medium) {
+    &.is-stacked,
+    .is-stacked & {
+      background: $background-color;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    img {
+
+      .is-portrait & {
+        @include breakpoint (small only) {
+          max-width: $thumb-image-width;
+        }
+      }
+
+      @include breakpoint(medium) {
+        max-width: $small-image-width;
+      }
+
+      .is-large & { // sass-lint:disable-line force-element-nesting
+
+        @include breakpoint(large) { 
+          max-width: $large-image-width;
+        }
+      }
+
+      .is-thumb & { // sass-lint:disable-line force-element-nesting
+        max-width: $thumb-image-width !important;
+      }
+
+      .is-stacked & {
+        max-width: none !important;
+      }
+    }
+  }
+
+  &__image-link {
+    display: block;
+    text-decoration: none;
+
+    * {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  &__title,
+  &__tag {
+    @extend %inverse-anchors;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: background-color 0.25s ease-out;
+    color: $white;
+    text-align: center;
+
+    * {
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    left: 0;
+    padding: $global-padding;
+    background: $title-background;
+
+    &:hover,
+    a:hover & {  // sass-lint:disable-line force-pseudo-nesting
+      background-color: $title-background-hover;
+    }
+
+    &,
+    * {
+      @include heading-style-anchors-underline($white, $white);
+
+      .has-three-columns & {
+        @include get-header-style($header-passed-in: 'h6');
+      }
+    }
+  }
+
+  &__tag {
+    @include anchor-colors($link: $white, $hover: $white);
+    padding: $global-padding / 2;
+    background: $tag-background;
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover & {  // sass-lint:disable-line force-pseudo-nesting
+      background-color: $tag-background-hover;
+    }
+
+    &,
+    * {
+      font-size: $global-font-size;
+      font-weight: 400 !important;
+      line-height: $paragraph-lineheight;
+    }
+
+    .is-portrait & {
+      @include breakpoint(small only) {
+        display: none;
+      }
+    }
+  }
+}
+
+.c-media-object {
+  @include media-object;
+}
+
+.c-promo-item {
+  @include media-object($is-promo: true, $background-color: $lighter-primary);
+}

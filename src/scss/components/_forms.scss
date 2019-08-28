@@ -1,0 +1,101 @@
+// sass-lint:disable placeholder-in-extend
+
+.c-form {
+  @include input-group($input-spacing: false);
+  @include component-grid($grid-row-nest: false, $three-column-breakpoint: medium);
+  margin-bottom: $global-margin;
+
+  // Force input and placeholder colors for inverse campaign columns
+  .#{$inverse-class} & {
+    #{text-inputs()},
+    textarea,
+    select {
+      color: $input-color;
+
+      &::placeholder {
+        color: $input-placeholder-color;
+      }
+    }
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  label:not([class^='c-btn']) { // sass-lint:disable-line force-pseudo-nesting
+    color: inherit;
+  }
+
+  label > [type='checkbox'],
+  label > [type='radio'] {
+    margin-bottom: 0;
+  }
+
+  &__row {
+    @include clearfix;
+
+    @include breakpoint(medium) {
+      @include grid-row-nest();
+    }
+  }
+
+  &__inline-columns {
+
+    &--left {
+      @include grid-column(4);
+    }
+
+    &--right {
+      @include grid-column(12);
+    }
+
+    &-label {
+
+      &--right,
+      &--middle-right {
+        text-align: right;
+      }
+
+      &--middle,
+      &--middle-right {
+        @include form-label-middle;
+      }
+    }
+  }
+
+  &__help-text {
+    @extend .help-text;
+    color: inherit;
+  }
+
+  &__alert-callout {
+    @include callout;
+    @include callout-style(get-color(alert));
+  }
+
+  &__error-text {
+    @include form-error;
+
+    &.is-visible {
+      display: block;
+    }
+  }
+
+  @if $abide-inputs {
+    // Error class for invalid inputs
+    .is-invalid-input {
+      @include form-input-error;
+    }
+  }
+
+  @if $abide-labels {
+    // Error class for labels of invalid outputs
+    .is-invalid-label {
+      color: $form-label-color-invalid;
+    }
+  }
+
+  &--hidden {
+    @include element-invisible;
+  }
+}

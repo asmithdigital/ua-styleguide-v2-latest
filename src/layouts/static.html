@@ -1,0 +1,139 @@
+{{> head}}
+
+<body class="{{#unless full-width}}ua-standard{{#if fixed-slider}} fixed-vegas-slider{{/if}}{{/unless}}{{#if campaign}} ua-campaign{{/if}}">
+  {{> static-skip-to-content}}
+
+  <div class="o-off-canvas__wrapper">
+
+    {{#if global-assets-loader}}
+    <div id="ua-search"></div>
+    {{/if}}
+    {{#unless global-assets-loader}}
+    {{> static-search}}
+    {{/unless}}
+
+    <div class="o-off-canvas__content" data-off-canvas-content>
+
+      {{#if fixed-slider}}
+      <div class="o-layout__slider o-layout__slider--fixed">
+        {{#unless custom-slider}}
+          {{> static-vegas}}
+        {{/unless}}
+        {{#if custom-slider}}
+          {{> static-custom-slider}}
+        {{/if}}
+      </div>
+      {{/if}}
+
+      <header class="o-layout__header" id="ua-top" role="banner">
+        {{> static-global-header}}
+      </header>
+
+      <main class="o-layout__main">
+
+        {{#unless fixed-slider}}
+        <div class="o-layout__slider-container">
+          <div class="o-layout__slider">
+          {{#unless minimal-banner}}
+          {{#unless custom-slider}}
+            {{> static-vegas}}
+          {{/unless}}
+          {{#if custom-slider}}
+            {{> rev-slider}}
+          {{/if}}
+          {{/unless}}
+          {{#if minimal-banner}}
+          {{> static-minimal-banner}}
+          {{/if}}
+          </div>
+          {{#unless no-page-title}}
+          <div class="o-layout__page-title">
+            <div class="o-layout__container">
+              {{> static-page-title}}
+            </div>
+          </div>
+          {{/unless}}
+        </div>
+        {{/unless}}
+
+        {{!-- The following includes determine the content layout template, found in /templates directory  --}}
+
+        {{#if degree-finder-grid}}
+        {{> degree-finder}}
+        {{/if}}
+
+        {{#unless degree-finder-grid}}
+          {{> standard-layout}}
+        {{/unless}}
+
+        {{!-- /content layout template  --}}
+
+      </main>
+
+      {{#unless hide-local-footer}}
+      <div class="o-layout__local-footer">
+        <div class="o-layout__container">
+          {{> static-local-footer}}
+        </div>
+      </div>
+      {{/unless}}
+
+      <footer  class="o-layout__footer">
+
+        {{#if global-assets-loader}}
+        <div id="ua-footer"></div>
+        {{/if}}
+        {{#unless global-assets-loader}}
+        {{> static-global-footer}}
+        {{/unless}}
+
+        {{> static-footer-meta}}
+      </footer>
+
+    </div>
+  </div>
+  
+  {{> static-back-top}}
+
+  {{#if degree-finder}}
+    <script src="{{root}}assets/js/vendor/jquery.min.js"></script>
+    <script src="{{root}}assets/js/vendor/jquery-ui.min.js"></script>
+    <script src="{{root}}assets/js/app.js"></script>
+    <script>
+    var settings = {
+        apiBaseUrl: '/data/',
+    };
+    if ($('#df-searchfield-new').length) {
+        var autocomplete = new DegreeFinder($('#df-searchfield-new'), settings);
+    }
+    </script>
+  {{/if}}
+  {{#unless degree-finder}}
+    <script src="{{root}}assets/js/app.jquery.js"></script>
+    {{#if data-table}}
+    <script src="{{root}}assets/js/plugins/datatables.js"></script>
+    {{/if}}
+  {{/unless}}
+
+  {{#if callout-cookie}}
+  {{> static-callout-cookie}}
+  {{/if}}
+
+  {{#unless global-assets-loader}}
+  {{> global-assets-plugin}}
+  {{/unless}}
+
+  {{#if global-assets-loader}}
+  {{> global-assets-loader}}
+  {{/if}}
+  
+  {{#if custom-slider}}
+  {{> static-custom-slider-scripts}}
+  {{/if}}
+
+  {{#if dark-mode}}
+  {{> dark-mode}}
+  {{/if}}
+
+  </body>
+</html>

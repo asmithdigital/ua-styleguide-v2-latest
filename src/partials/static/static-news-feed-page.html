@@ -1,0 +1,30 @@
+<div class="c-post">
+  <div class="c-post__content">
+    <h1>{{#if events-demo}}Events{{else}}News{{/if}} feed single item</h1>
+    {{#if events-demo}}
+    <h2>SASTA Year 12 Exam Prep Sessions - Biology</h2>
+    {{> static-events-detail-box}}
+    {{/if}}
+    {{#unless events-demo}}
+    <div class="c-post__meta">
+      <i class="fa fa-clock-o" aria-hidden="true"></i> Posted on <span class="c-post__meta-date"><a href="#0">December 9 2016</a></span> by <span class="c-post__meta-author"><a href="#0">Author Name</a></span>
+    </div>
+    <figure class="c-image is-full-width">
+      <img src="https://via.placeholder.com/1786x595" alt="" class="c-image--full-width">
+    </figure>
+    <figure class="c-image c-image--right">
+      <img src="https://via.placeholder.com/1166x750" alt="" class="c-image--large">
+    </figure>
+    {{/unless}}
+    <p>Lorem ipsum dolor sit amet, at eum docendi euripidis sadipscing, dignissim conceptam percipitur nam an, mel te natum illum veritus. Et usu euismod nominati, cu meis habemus laboramus has, est veritus signiferumque ea. Ne ius stet nostro aeterno, facilis albucius definitionem ut mea. Eos nostro principes urbanitas ut, eam labitur salutatus adipiscing no.</p>
+    <p>Ut tantas discere aliquam mei, verear deleniti scriptorem id eam, ludus nostro vim no. Sonet graece voluptatum an vel. Duo ut fabellas accusata, pro odio eros aperiri te, quot harum errem at vel. Eu eam officiis sapientem complectitur, ius ea veniam mentitum. Mollis audire aperiri pro in, duo dolore delectus vivendum ad. Solum dolores complectitur nam ad, affert ignota in vis, ex nostrum copiosae his. Vix latine dolorum et.</p>
+  </div>
+  {{#unless events-demo}}
+  <div class="c-post__utility">
+    <span class="c-post__utility-categories">Posted in </span> <a href="#0">Category</a>, <a href="#0">Category</a> |
+    <span class="c-post__utility-tags">Tagged in <a href="#0">tag</a>, <a href="#0">tag</a>, <a href="#0">tag</a></span>
+    <span class="c-post__utility-comments"><i class="fa fa-comment" aria-hidden="true"></i> Comments off<span class="c-post--hidden"> on Post Title goes here</span></span>
+    <span class="c-post__utility-comments"><i class="fa fa-comment" aria-hidden="true"></i> <a href="#0">Leave a comment<span class="c-post--hidden"> on Post Title goes here</span></a></span>
+  </div>
+  {{/unless}}
+</div>

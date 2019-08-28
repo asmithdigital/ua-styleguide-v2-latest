@@ -1,0 +1,64 @@
+.c-post {
+  @include content-grid-children;
+
+  &,
+  &__list {
+    position: relative;
+    clear: both;
+    height: auto;
+    margin: 0 0 $global-margin;
+    overflow: hidden;
+  }
+
+  &__list-item {
+    margin: 0 0 $global-margin;
+    border-bottom: 1px solid $medium-gray;
+    overflow: hidden;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+
+  &__heading {
+    @include heading-style-anchors-underline($resize: false);
+  }
+
+  &__meta,
+  &__utility {
+    font-style: italic;
+    color: $darker-gray;
+  }
+
+  &__meta {
+    margin: 0 0 $global-margin;
+  }
+
+  &__utility {
+    display: block;
+    padding: $global-padding 0;
+
+    &-comments {
+      display: block;
+      clear: both;
+      color: get-color(quaternary);
+    }
+  }
+
+  &--hidden {
+    @include element-invisible;
+  }
+
+  &__feed-icon {
+    float: right;
+    margin: 0 0 $global-margin;
+  }
+
+  &__event-detail {
+    @include icon-detail-list;
+  }
+}

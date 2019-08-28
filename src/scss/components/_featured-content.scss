@@ -1,0 +1,9 @@
+.c-featured-content {
+  @include input-wrapper;
+  @include content-grid-children;
+  overflow: hidden;
+
+  &.is-compact {
+    @include input-wrapper($wrapper-padding: 1rem 1rem 0, $wrapper-padding-medium: 1rem 1rem 0);
+  }
+}

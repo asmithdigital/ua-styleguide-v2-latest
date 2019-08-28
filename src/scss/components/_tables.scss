@@ -1,0 +1,384 @@
+// This wrapper is used for IE9 support and also for datatables
+.c-table {
+  max-width: 100%;
+
+  // IE9 support
+  .lt-ie10 & {
+    overflow-x: auto;
+  }
+
+  // Datatables
+  &-sortable {
+    margin-bottom: $global-margin;
+    overflow: hidden;
+
+    table {
+      width: 100% !important;
+      margin-bottom: 0;
+    }
+
+    // Dynamically generated filter markup
+    input,
+    select {
+      margin-bottom: 0;
+
+      @include breakpoint(medium) {
+        display: inline;
+        width: auto;
+      }
+    }
+
+    select {
+      // padding-top: 0;
+      // padding-bottom: 0;
+
+      @include breakpoint(small only) {
+        float: right;
+      }
+    }
+
+    .dataTables_filter input { // sass-lint:disable-line force-element-nesting
+      @include breakpoint(medium) {
+        margin-left: $global-margin / 2;
+      }
+    }
+
+    &__top {
+      padding: $table-padding;
+      background: $table-head-row-hover;
+    }
+
+    &__top,
+    &__bottom,
+    &__left {
+      overflow: hidden;
+    }
+
+    &__left {
+      @include breakpoint(medium) {
+        float: left;
+      }
+    }
+
+    &__right {
+      @include breakpoint(medium) {
+        float: right;
+      }
+    }
+
+    // Pagination
+    .paginate_button {
+      @include button;
+      @include button-hollow;
+      @include button-hollow-style;
+      margin-bottom: 0;
+      padding: $table-padding;
+
+      &, &:hover, &:focus {
+        border-color: transparent;
+      }
+
+      &.disabled {
+        display: none;
+      }
+    }
+
+    .dataTables_info {
+      padding: $table-padding;
+      font-size: map-get($button-sizes, default);
+    }
+
+    // Sorting icons
+
+    thead th { // sass-lint:disable-line force-element-nesting
+      padding-right: 16px; // add some space for icon
+    }
+
+    .sorting,
+    .sorting_asc,
+    .sorting_desc {
+      position: relative;
+      cursor: pointer;
+
+      &::before,
+      &::after {
+        @extend .fa; // sass-lint:disable-line placeholder-in-extend
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        font-size: 0.75rem;
+      }
+
+      &::before {
+        margin-top: -10px;
+        content: $fa-var-caret-up;
+      }
+
+      &::after {
+        margin-top: -4px;
+        content: $fa-var-caret-down;
+      }
+    }
+
+    .sorting {
+      &::before,
+      &::after {
+        color: $darker-gray;
+      }
+    }
+
+    .sorting_asc,
+    .sorting_desc {
+      &::before,
+      &::after {
+        color: get-color(secondary);
+      }
+    }
+
+    .sorting_asc {
+      &::after {
+        content: none;
+      }
+    }
+
+    .sorting_desc {
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
+
+table {
+  @include table-scroll;
+  @include table-hover;
+
+  .lt-ie10 & {
+    width: auto;
+  }
+
+  &.dataTable {
+    display: table;
+  }
+
+  // Stop the text from wrapping onto next line with whitespace
+  &.no-wrap {
+    display: table;
+
+    td {
+      white-space: nowrap;
+    }
+  }
+
+  // Some quick scrollbar styles for webkit
+  &::-webkit-scrollbar {
+    width: 1em;
+    height: 0.5em;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 1rem;
+    background: $lighter-gray;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background-color: $darker-gray;
+  }
+}
+
+.dataTables_wrapper {
+  max-width: 100%;
+}
+
+td {
+  @include is-dark-promot-item-inverse($color: $body-font-color);
+}
+
+// sass-lint:disable-all
+// simpleBar polyfill CSS
+.no-cssscrollbar {
+  [data-simplebar]{position:relative;flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start}.simplebar-wrapper{overflow:hidden;width:inherit;height:inherit;max-width:inherit;max-height:inherit}.simplebar-mask{direction:inherit;position:absolute;overflow:hidden;padding:0;margin:0;left:0;top:0;bottom:0;right:0;width:auto!important;height:auto!important;z-index:0}.simplebar-offset{direction:inherit!important;box-sizing:inherit!important;resize:none!important;position:absolute;top:0;left:0;bottom:0;right:0;padding:0;margin:0;-webkit-overflow-scrolling:touch}.simplebar-content-wrapper{direction:inherit;box-sizing:border-box!important;position:relative;display:block;height:100%;width:auto;visibility:visible;overflow:auto;max-width:100%;max-height:100%}.simplebar-content:after,.simplebar-content:before{content:" ";display:table}.simplebar-placeholder{max-height:100%;max-width:100%;width:100%;pointer-events:none}.simplebar-height-auto-observer-wrapper{box-sizing:inherit!important;height:100%;width:inherit;max-width:1px;position:relative;float:left;max-height:1px;overflow:hidden;z-index:-1;padding:0;margin:0;pointer-events:none;flex-grow:inherit;flex-shrink:0;flex-basis:0}.simplebar-height-auto-observer{box-sizing:inherit;display:block;opacity:0;position:absolute;top:0;left:0;height:1000%;width:1000%;min-height:1px;min-width:1px;overflow:hidden;pointer-events:none;z-index:-1}.simplebar-track{z-index:1;position:absolute;right:0;bottom:0;pointer-events:none;overflow:hidden}[data-simplebar].simplebar-dragging .simplebar-track{pointer-events:all}.simplebar-scrollbar{position:absolute;right:2px;width:7px;min-height:10px}.simplebar-scrollbar:before{position:absolute;content:"";background:#000;border-radius:7px;left:0;right:0;opacity:0;transition:opacity .2s linear}.simplebar-track .simplebar-scrollbar.simplebar-visible:before{opacity:.5;transition:opacity 0s linear}.simplebar-track.simplebar-vertical{top:0;width:11px}.simplebar-track.simplebar-vertical .simplebar-scrollbar:before{top:2px;bottom:2px}.simplebar-track.simplebar-horizontal{left:0;height:11px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar:before{height:100%;left:2px;right:2px}.simplebar-track.simplebar-horizontal .simplebar-scrollbar{right:auto;left:0;top:2px;height:7px;min-height:0;min-width:10px;width:auto}[data-simplebar-direction=rtl] .simplebar-track.simplebar-vertical{right:auto;left:0}.hs-dummy-scrollbar-size{direction:rtl;position:fixed;opacity:0;visibility:hidden;height:500px;width:500px;overflow-y:hidden;overflow-x:scroll}
+}
+
+// DataTables responsive
+// Copied directly from datatables resppnsive plugin - some edits have been made
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty {
+  cursor: default !important;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dataTables_empty:before {
+  display: none !important;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
+  top: 9px;
+  left: 4px;
+  height: 14px;
+  width: 14px;
+  display: block;
+  position: absolute;
+  color: white;
+  border: 2px solid white;
+  border-radius: 14px;
+  box-shadow: 0 0 3px #444;
+  box-sizing: content-box;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 14px;
+  content: '+';
+  background-color: #31b131;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+  content: '-';
+  background-color: #d33333;
+}
+table.dataTable.dtr-inline.collapsed > tbody > tr.child td:before {
+  display: none;
+}
+table.dataTable.dtr-inline.collapsed.compact > tbody > tr > td:first-child,
+table.dataTable.dtr-inline.collapsed.compact > tbody > tr > th:first-child {
+  padding-left: 27px;
+}
+table.dataTable.dtr-inline.collapsed.compact > tbody > tr > td:first-child:before,
+table.dataTable.dtr-inline.collapsed.compact > tbody > tr > th:first-child:before {
+  top: 5px;
+  left: 4px;
+  height: 14px;
+  width: 14px;
+  border-radius: 14px;
+  line-height: 14px;
+  text-indent: 3px;
+}
+table.dataTable.dtr-column > tbody > tr > td.control,
+table.dataTable.dtr-column > tbody > tr > th.control {
+  position: relative;
+  cursor: pointer;
+}
+table.dataTable.dtr-column > tbody > tr > td.control:before,
+table.dataTable.dtr-column > tbody > tr > th.control:before {
+  top: 50%;
+  left: 50%;
+  height: 16px;
+  width: 16px;
+  margin-top: -10px;
+  margin-left: -10px;
+  display: block;
+  position: absolute;
+  color: white;
+  border: 2px solid white;
+  border-radius: 14px;
+  box-shadow: 0 0 3px #444;
+  box-sizing: content-box;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 14px;
+  content: '+';
+  background-color: #31b131;
+}
+table.dataTable.dtr-column > tbody > tr.parent td.control:before,
+table.dataTable.dtr-column > tbody > tr.parent th.control:before {
+  content: '-';
+  background-color: #d33333;
+}
+table.dataTable > tbody > tr.child {
+  padding: 0.5em 1em;
+}
+table.dataTable > tbody > tr.child:hover {
+  background: transparent !important;
+}
+table.dataTable > tbody > tr.child ul.dtr-details {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+table.dataTable > tbody > tr.child ul.dtr-details li {
+  border-bottom: 1px solid #efefef;
+  padding: 0.5em 0;
+}
+table.dataTable > tbody > tr.child ul.dtr-details li:first-child {
+  padding-top: 0;
+}
+table.dataTable > tbody > tr.child ul.dtr-details li:last-child {
+  border-bottom: none;
+}
+table.dataTable > tbody > tr.child span.dtr-title {
+  display: inline-block;
+  min-width: 75px;
+  font-weight: bold;
+}
+
+div.dtr-modal {
+  position: fixed;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  padding: 10em 1em;
+}
+div.dtr-modal div.dtr-modal-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 50%;
+  overflow: auto;
+  margin: auto;
+  z-index: 102;
+  overflow: auto;
+  background-color: #f5f5f7;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+div.dtr-modal div.dtr-modal-content {
+  position: relative;
+  padding: 1em;
+}
+div.dtr-modal div.dtr-modal-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid #eaeaea;
+  background-color: #f9f9f9;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 12;
+}
+div.dtr-modal div.dtr-modal-close:hover {
+  background-color: #eaeaea;
+}
+div.dtr-modal div.dtr-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (max-width: 767px) {
+  div.dtr-modal div.dtr-modal-display {
+    width: 95%;
+  }
+}
+// sass-lint:enable-all

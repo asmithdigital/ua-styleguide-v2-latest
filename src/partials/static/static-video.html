@@ -1,0 +1,60 @@
+<div class="c-video__row">
+    {{#repeat 2}}
+    <section class="c-video__column">
+      {{> static-video-single}}
+    </section>
+    {{/repeat}}
+  </div>
+
+<div class="c-video__row is-full-width">
+  <section class="c-video__column">
+    {{> static-video-single hide-video-content="true"}}
+  </section>
+</div>
+
+</div>
+{{> new-column}}
+
+<div class="c-video__row">
+  {{#repeat 3}}
+  <section class="c-video__column">
+      {{> static-video-single hide-video-content="true"}}
+  </section>
+  {{/repeat}}
+</div>
+
+</div>
+{{> new-column}}
+
+<div class="c-video__row is-full-width">
+  <section class="c-video__column">
+      {{> static-video-single hide-video-content="true" custom-video-url="https://echo360.org.au/media/bc402a93-18db-4017-a027-2a3391a49182/public?autoplay=false&automute=false" responsive-ratio=" "}}
+  </section>
+</div>
+
+<div class="c-video__row is-full-width">
+  <section class="c-video__column">
+      {{> static-video-single hide-video-content="true" custom-video-url="https://echo360.org.au/media/bc402a93-18db-4017-a027-2a3391a49182/public?autoplay=false&automute=false" responsive-ratio="--16-9"}}
+  </section>
+</div>
+
+<div class="c-video__row is-full-width">
+  <section class="c-video__column">
+      {{> static-video-single hide-video-content="true" custom-video-url="https://echo360.org.au/media/bc402a93-18db-4017-a027-2a3391a49182/public?autoplay=false&automute=false" responsive-ratio="--4-3"}}
+  </section>
+</div>
+
+<div class="c-video__row is-full-width">
+  <section class="c-video__column">
+    {{> static-video-single hide-video-content="true" native-video="true"}}
+  </section>
+</div>
+
+</div>
+{{> new-column}}
+
+<style>
+  .mejs__container {
+    max-width: 100% !important;
+  }
+</style>

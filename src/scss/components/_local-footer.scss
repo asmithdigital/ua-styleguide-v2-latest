@@ -1,0 +1,33 @@
+.c-local-footer {
+  @include footer-grid($body-font-color, $desktop-column-size: 4, $reset-column-size: 8);
+
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &__column {
+    @include breakpoint(large) {
+      float: left !important;
+      margin-right: -100%;
+    }
+
+    &.is-second-column {
+      @include breakpoint(large) {
+        @include grid-column-offset(4);
+      }
+    }
+
+    &.is-third-column {
+      @include breakpoint(large) {
+        @include grid-column-offset(8);
+      }
+    }
+
+    &.is-fourth-column {
+      @include breakpoint(large) {
+        @include grid-column-offset(12);
+      }
+    }
+  }
+}

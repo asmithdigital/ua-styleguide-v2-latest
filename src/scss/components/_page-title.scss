@@ -1,0 +1,61 @@
+.#{$page-title} {
+  @include mobile-reset($custom-gutter: $base-font-size * 3.5);
+  position: relative;
+  padding-top: $global-padding;
+  padding-bottom: $global-padding;
+
+  @include breakpoint(large) {
+    @include grid-column(16, $gutters: $base-font-size * 4);
+    padding-top: $global-padding * 1.5;
+    padding-bottom: $global-padding * 1.5;
+
+    .ua-standard & {
+      @include grid-column-offset(3.25);
+      @include grid-column(12.75, $gutters: $base-font-size * 4);
+    }
+  }
+
+  &__title-bar {
+    @include title-bar(0, inherit);
+    margin-top: $global-margin / 2;
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 1.15;
+    color: $white;
+    text-transform: uppercase;
+
+    @include breakpoint(large) {
+      font-size: 4.4rem;
+
+      &.is-small {
+        font-size: 2.4rem;
+      }
+    }
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+
+  &__left,
+  &__right {
+    vertical-align: top;
+  }
+
+  &__right {
+    float: right;
+    padding-left: $global-padding;
+
+    @include breakpoint(large) {
+
+      .ua-standard &,
+      .no-js & {
+        display: none;
+      }
+    }
+  }
+}

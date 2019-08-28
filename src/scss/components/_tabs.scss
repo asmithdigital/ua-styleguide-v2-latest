@@ -1,0 +1,46 @@
+$tab-background: $lighter-gray;
+$tab-content-border: transparent;
+$tab-color: $black;
+$tab-item-font-size: inherit;
+$tab-item-background-hover: lighten($tab-background, 2);
+$tab-background-active: $tab-item-background-hover;
+$tab-active-border: #fdfdfd;
+
+.c-tabs {
+  @include tabs-container; 
+
+  &__container {
+    @include content-grid-children;
+    margin: 0 0 $global-margin;
+  }
+
+  &__title {
+    @include tabs-title;
+    @include heading-style-anchors-underline($size: 'h6', $color-hover: get-color(primary));
+
+    > a {
+      @include disable-mouse-outline;
+      border-top: 2px solid transparent;
+      border-right: 1px solid transparent;
+      text-decoration: none !important;
+
+      &:focus,
+      &[aria-selected='true'] {
+        border-top: 2px solid get-color(primary);
+        border-right: 1px solid $tab-active-border;
+      }
+    }
+  }
+
+  &__content {
+    @include tabs-content;
+  }
+
+  &__panel {
+    @include tabs-panel;
+
+    &.is-active-panel {
+      display: block;
+    }
+  }
+}

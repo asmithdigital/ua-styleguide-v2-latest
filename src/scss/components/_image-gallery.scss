@@ -1,0 +1,292 @@
+.c-image-gallery {
+  @include content-grid-children;
+  margin: 0 0 $global-margin;
+
+  &__list {
+    @extend %full-width-image;
+    @include component-grid($four-column-breakpoint: medium, $column-name: '-item', $two-column-breakpoint: small);
+    list-style-type: none;
+
+    &-link {
+      @extend %image-link;
+    }
+  }
+}
+
+// sass-lint:disable-all
+// Swipebox plugin specific styles - copied straight out of plugin CSS
+// @TODO: use pligin scss import
+// --------------------------------------------------
+html.swipebox-html.swipebox-touch {
+  overflow: hidden !important;
+}
+
+#swipebox-overlay {
+  position: fixed;
+  z-index: 99999 !important;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: $black;
+  user-select: none;
+
+  img {
+    border: none !important;
+  }
+}
+
+#swipebox-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#swipebox-slider {
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform .4s ease;
+  white-space: nowrap;
+  cursor: pointer;
+
+  .slide {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    line-height: 1px;
+    text-align: center;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 50%;
+      width: 1px;
+      margin-right: -1px;
+    }
+
+    img,
+    .swipebox-video-container,
+    .swipebox-inline-container {
+      display: inline-block;
+      width: auto;
+      height: auto;
+      max-height: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+    }
+  }
+
+  .slide-loading {
+    background: url('../img/swipebox/loader.gif') no-repeat center center;
+  }
+}
+
+#swipebox-bottom-bar,
+#swipebox-top-bar {
+  opacity: 0;
+  transition-duration: .5s;
+  position: absolute;
+  left: 0;
+  z-index: 999;
+  height: 50px;
+  width: 100%;
+  text-shadow: 1px 1px 1px $black;
+  background: $black;
+}
+
+#swipebox-bottom-bar {
+  bottom: -50px;
+
+  &.visible-bars {
+    opacity: 1;
+    transform: translate3d(0, -50px, 0);
+  }
+}
+
+#swipebox-top-bar {
+  top: -50px;
+  color: $white !important;
+  font-size: 15px;
+  line-height: 43px;
+  //font-family: $font-body;
+
+  &.visible-bars {
+    opacity: 1;
+    transform: translate3d(0, 50px, 0);
+  }
+}
+// Moved .swipebox-video-container here so it isn't nested and lint doesn't complain.
+// Commented out box-sizing as we need to check if the include is working before we can replace original code.
+.swipebox-video-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1140px;
+  max-height: 100%;
+  padding: 5%;
+  background: none;
+
+  .swipebox-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+}
+
+#swipebox-title {
+  display: block;
+  width: auto;
+  padding: .5em 3.5em 0 .5em;
+  background-color: rgba($black, .8);
+  line-height: 1.7em;
+  text-align: center;
+}
+
+#swipebox-prev,
+#swipebox-next,
+#swipebox-close {
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border: none !important;
+  background: url('../img/swipebox/icons.png') no-repeat;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+#swipebox-arrows {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 0 auto;
+}
+
+#swipebox-prev {
+  float: left;
+  background-position: -32px 13px;
+}
+
+#swipebox-next {
+  float: right;
+  background-position: -78px 13px;
+}
+
+#swipebox-close {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  background-position: 15px 12px;
+}
+
+.swipebox-no-close-button #swipebox-close {
+  display: none;
+}
+
+#swipebox-prev,
+#swipebox-next {
+
+  &.is-disabled {
+    opacity: .3;
+  }
+}
+
+.swipebox-no-touch {
+
+  #swipebox-overlay.rightSpring #swipebox-slider {
+    animation: rightSpring .3s;
+  }
+
+  #swipebox-overlay.leftSpring  #swipebox-slider {
+    animation: leftSpring .3s;
+  }
+}
+
+.swipebox-touch {
+
+  #swipebox-container {
+
+    &::before,
+    &::after {
+      opacity: 0;
+      content: ' ';
+      position: absolute;
+      z-index: 999;
+      top: 0;
+      width: 20px;
+      height: 100%;
+      backface-visibility: hidden;
+      transition: all .3s ease;
+    }
+
+    &::before {
+      box-shadow: #656565 10px 0 10px -8px inset;
+      left: 0;
+    }
+
+    &::after {
+      box-shadow: #656565 -10px 0 10px -8px inset;
+      right: 0;
+    }
+  }
+
+  #swipebox-overlay.leftSpringTouch #swipebox-container {
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+
+  #swipebox-overlay.rightSpringTouch #swipebox-container {
+
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes rightSpring {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: -30px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes leftSpring {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: 30px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+// sass-lint:enable-all

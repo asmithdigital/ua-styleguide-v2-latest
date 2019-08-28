@@ -1,0 +1,60 @@
+$button-palette: (
+  primary: get-color(primary),
+  secondary: get-color(secondary),
+  success: get-color(tertiary),
+  warning: get-color(quaternary),
+  alert: get-color(quinary)
+);
+
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out, border-color 0.25s ease-out;
+
+.c-btn {
+  @include button;
+  @include disabled-buttons(get-color(primary));
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    text-decoration: none !important;
+  }
+
+  p & {
+    margin-bottom: 0;
+  }
+
+  // heckerydoo <div> with button class and nested <a>
+  a {
+    color: inherit !important;
+    text-decoration: inherit !important;
+  }
+
+  &--block {
+    @include button-expand(true);
+  }
+
+  // Demo size and color. To be replaced
+  &--large {
+    font-size: 1.25rem;
+  }
+
+  &--hollow {
+    @include hollow-button;
+
+    &-light {
+      @include hollow-button($color: $white, $hover-color: $medium-gray);
+    }
+  }
+
+  // Colors
+  @each $name, $color in $button-palette {
+    &--#{$name} {
+      @include button-style($color, auto, auto);
+      @include disabled-buttons($color);
+    }
+  }
+
+  &__group {
+    @include button-group($child-selector: '.c-btn');
+  }
+}

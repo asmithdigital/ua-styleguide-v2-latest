@@ -1,0 +1,116 @@
+<div class="docs-nav" id="docs-menu">
+
+<!--
+  <ul class="docs-nav-version-container">
+    <li class="docs-nav-version">
+      <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">Changelog</a>
+    </li>
+  </ul>
+-->
+
+  <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+    <a class="docs-expand-all" data-expand-all="true"></a>
+    <li class="accordion-item {{#ifpage 'index' 'getting-started' 'global-assets' 'javascript'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Setup</a>
+      <div class="accordion-content {{#ifpage 'index' 'getting-started' 'global-assets' 'javascript'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'index'}} class="current"{{/ifpage}}><a href="index.html">Welcome</a></li>
+          <li{{#ifpage 'getting-started'}} class="current"{{/ifpage}}><a href="getting-started.html">Getting started</a></li>
+          <li{{#ifpage 'global-assets'}} class="current"{{/ifpage}}><a href="global-assets.html">Global Assets</a></li>
+          <li{{#ifpage 'javascript'}} class="current"{{/ifpage}}><a href="javascript.html">JavaScript</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'base-structure' 'grid' 'content-layouts' 'page-heading'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Layouts</a>
+      <div class="accordion-content {{#ifpage 'base-structure' 'grid' 'content-layouts' 'content-grid' 'page-heading'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'base-structure'}} class="current"{{/ifpage}}><a href="base-structure.html">Base structure</a></li>
+          <li{{#ifpage 'grid'}} class="current"{{/ifpage}}><a href="grid.html">Base grid</a></li>
+          <li{{#ifpage 'content-layouts'}} class="current"{{/ifpage}}><a href="content-layouts.html">Content layouts</a></li>
+          <li{{#ifpage 'content-grid'}} class="current"{{/ifpage}}><a href="content-grid.html">Content grid</a></li>
+          <li{{#ifpage 'page-heading'}} class="current"{{/ifpage}}><a href="page-heading.html">Page heading</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'site-menu' 'services-menu' 'breadcrumbs' 'login' 'buttons' 'pagination' 'quick-links-menu' 'mega-menu' 'smooth-scroll'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Navigation</a>
+      <div class="accordion-content {{#ifpage 'site-menu' 'services-menu' 'breadcrumbs' 'login' 'buttons' 'pagination' 'quick-links-menu' 'mega-menu' 'smooth-scroll'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'site-menu'}} class="current"{{/ifpage}}><a href="site-menu.html">Site menu <span class="label">JS</span></a></li>
+          <li{{#ifpage 'services-menu'}} class="current"{{/ifpage}}><a href="services-menu.html">Services menu <span class="label">JS</span></a></li>
+          <li{{#ifpage 'breadcrumbs'}} class="current"{{/ifpage}}><a href="breadcrumbs.html">Breadcrumbs</a></li>
+          <li{{#ifpage 'login'}} class="current"{{/ifpage}}><a href="login.html">Login</a></li>
+          <li{{#ifpage 'buttons'}} class="current"{{/ifpage}}><a href="buttons.html">Buttons</a></li>
+          <li{{#ifpage 'pagination'}} class="current"{{/ifpage}}><a href="pagination.html">Pagination</a></li>
+          <li{{#ifpage 'quick-links-menu'}} class="current"{{/ifpage}}><a href="quick-links-menu.html">Quick links menu <span class="label">JS</span></a></li>
+          <li{{#ifpage 'mega-menu'}} class="current"{{/ifpage}}><a href="mega-menu.html">Mega menu <span class="label">JS</span></a></li>
+          <li{{#ifpage 'smooth-scroll'}} class="current"{{/ifpage}}><a href="smooth-scroll.html">Smooth scroll <span class="label">JS</span></a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'accordion' 'media-object' 'tabs' 'tables' 'rss-feed' 'featured-content' 'local-footer' 'footer-meta' 'a-z-list' 'news-feed' 'events-feed' 'callout' 'filter-content'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Containers</a>
+      <div class="accordion-content {{#ifpage 'accordion' 'media-object' 'tabs' 'tables' 'rss-feed' 'featured-content' 'local-footer' 'footer-meta' 'a-z-list' 'news-feed' 'events-feed' 'callout' 'filter-content'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'accordion'}} class="current"{{/ifpage}}><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
+          <li{{#ifpage 'media-object'}} class="current"{{/ifpage}}><a href="media-object.html">Media Object <span class="label">JS</span></a></li>
+          <li{{#ifpage 'tabs'}} class="current"{{/ifpage}}><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
+          <li{{#ifpage 'tables'}} class="current"{{/ifpage}}><a href="tables.html">Tables</a></li>
+          <li{{#ifpage 'rss-feed'}} class="current"{{/ifpage}}><a href="rss-feed.html">RSS feed</a></li>
+          <li{{#ifpage 'featured-content'}} class="current"{{/ifpage}}><a href="featured-content.html">Featured content</a></li>
+          <li{{#ifpage 'local-footer'}} class="current"{{/ifpage}}><a href="local-footer.html">Local footer</a></li>
+          <li{{#ifpage 'footer-meta'}} class="current"{{/ifpage}}><a href="footer-meta.html">Footer meta</a></li>
+          <li{{#ifpage 'a-z-list'}} class="current"{{/ifpage}}><a href="a-z-list.html">A-Z lists <span class="label">JS</span></a></li>
+          <li{{#ifpage 'news-feed'}} class="current"{{/ifpage}}><a href="news-feed.html">News feed</a></li>
+          <li{{#ifpage 'events-feed'}} class="current"{{/ifpage}}><a href="events-feed.html">Events feed</a></li>
+          <li{{#ifpage 'callout'}} class="current"{{/ifpage}}><a href="callout.html">Callout</a></li>
+          <li{{#ifpage 'filter-content'}} class="current"{{/ifpage}}><a href="filter-content.html">Filter content <span class="label">JS</span></a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'lists' 'icon-font' 'tooltips'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Typography</a>
+      <div class="accordion-content {{#ifpage 'lists' 'icon-font' 'tooltips'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'icon-font'}} class="current"{{/ifpage}}><a href="icon-font.html">Icon font</a></li>
+          <li{{#ifpage 'lists'}} class="current"{{/ifpage}}><a href="lists.html">Lists</a></li>
+          <li{{#ifpage 'tooltips'}} class="current"{{/ifpage}}><a href="tooltips.html">Tooltips</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'forms' 'form-validation' 'autocomplete' 'degree-finder-search'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Forms</a>
+      <div class="accordion-content {{#ifpage 'forms' 'form-validation' 'autocomplete' 'degree-finder-search'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'forms'}} class="current"{{/ifpage}}><a href="forms.html">Forms</a></li>
+          <li{{#ifpage 'form-validation'}} class="current"{{/ifpage}}><a href="form-validation.html">Form validation <span class="label">JS</span></a></li>
+          <li{{#ifpage 'autocomplete'}} class="current"{{/ifpage}}><a href="autocomplete.html">Autocomplete <span class="label">JS</span></a></li>
+          <li{{#ifpage 'degree-finder-search'}} class="current"{{/ifpage}}><a href="degree-finder-search.html">Degree finder search <span class="label">JS</span></a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="accordion-item {{#ifpage 'slider' 'image-gallery' 'images' 'interchange' 'audio' 'video' 'social-media'}}is-active{{/ifpage}}" data-accordion-item>
+      <a href="#" class="accordion-title">Media</a>
+      <div class="accordion-content {{#ifpage 'slider' 'image-gallery' 'images' 'interchange' 'audio' 'video' 'social-media'}}is-active{{/ifpage}}" data-tab-content>
+        <ul class="docs-nav-subcategory">
+          <li{{#ifpage 'slider'}} class="current"{{/ifpage}}><a href="slider.html">Slider <span class="label">JS</span></a></li>
+          <li{{#ifpage 'image-gallery'}} class="current"{{/ifpage}}><a href="image-gallery.html">Image gallery <span class="label">JS</span></a></li>
+          <li{{#ifpage 'images'}} class="current"{{/ifpage}}><a href="images.html">Images</a></li>
+          <li{{#ifpage 'interchange'}} class="current"{{/ifpage}}><a href="interchange.html">Interchange</a></li>
+          <li{{#ifpage 'social-media'}} class="current"{{/ifpage}}><a href="social-media.html">Social media</a></li>
+          <li{{#ifpage 'audio'}} class="current"{{/ifpage}}><a href="audio.html">Audio <span class="label">JS</span></a></li>
+          <li{{#ifpage 'video'}} class="current"{{/ifpage}}><a href="video.html">Video <span class="label">JS</span></a></li>
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+
+</div>
