@@ -27,7 +27,7 @@
     "fontfaceobserver": "^2.0.13",
     "imagesloaded": "^4.1.4",
     "isotope-layout": "^3.0.5",
-    "jquery": ">=3.0.0",
+    "jquery": ">=3.5.0",
     "jquery-ui-dist": "^1.12.1",
     "mediaelement": "^4.2.9",
     "moment": "~2.17.1",
