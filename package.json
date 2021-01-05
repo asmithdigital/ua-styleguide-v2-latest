@@ -17,7 +17,7 @@
   "author": "webteam",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "corejs-typeahead": "^1.1.1",
     "datatables.net": "~1.10.15",
     "datatables.net-responsive": "~2.1.1",
