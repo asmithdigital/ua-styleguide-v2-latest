@@ -19,7 +19,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "corejs-typeahead": "^1.1.1",
-    "datatables.net": "~1.10.15",
+    "datatables.net": "~1.11.3",
     "datatables.net-responsive": "~2.1.1",
     "datetime-moment": "^1.0.0",
     "fitvids.1.1.0": "^1.1.0",
