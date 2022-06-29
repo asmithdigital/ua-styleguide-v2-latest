@@ -2171,9 +2171,9 @@ datetime-moment@^1.0.0:
   integrity sha512-AVbNfYMXxY+DtQMf+Ls9JkdhZvNaEvV+2y9nuD6D3hE9NmsNtdXvQrU/qeAPwe+DGhjHHLzhn5Mfi2ltVUrD3g==
 
 deap@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/deap/-/deap-1.0.0.tgz#b148bf82430a27699b7483a03eb6b67585bfc888"
-  integrity sha1-sUi/gkMKJ2mbdIOgPra2dYW/yIg=
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/deap/-/deap-1.0.1.tgz#0646e9e1a095ffe8a9e404d68d1f76dcf57e66fb"
+  integrity sha512-k75KYNZMvwAwes2xIPry/QTffXIchjD8QfABvvfTr80P85jv5ZcKqcoDo+vMe71nNnVnXYe8MA28weyqcf/DKw==
 
 debug-fabulous@0.0.X:
   version "0.0.4"
@@ -6362,7 +6362,7 @@ modernizr@^3.0.0-alpha:
 
 moment@~2.17.1:
   version "2.17.1"
-  resolved "http://registry.npmjs.org/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
   integrity sha1-/tlQYGPzaxDwZsi1mhRNf66+HYI=
 
 motion-ui@~1.2.2:
